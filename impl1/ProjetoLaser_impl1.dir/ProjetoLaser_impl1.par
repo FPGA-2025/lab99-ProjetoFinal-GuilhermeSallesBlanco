@@ -1,0 +1,28 @@
+PAR: Place And Route Diamond (64-bit) 3.14.0.75.2.
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+Wed Sep 24 22:57:58 2025
+
+C:/lscc/diamond/3.14/ispfpga\bin\nt64\par -f ProjetoLaser_impl1.p2t
+ProjetoLaser_impl1_map.ncd ProjetoLaser_impl1.dir ProjetoLaser_impl1.prf -gui
+-msgset
+C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml
+
+
+Preference file: ProjetoLaser_impl1.prf.
+
+Level/       Number       Worst        Timing       Worst        Timing       Run          NCD
+Cost [ncd]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
+----------   --------     -----        ------       -----------  -----------  ----         ------
+5_1   *      0            32.711       0            0.194        0            07           Completed
+
+* : Design saved.
+
+Total (real) run time for 1-seed: 7 secs 
+
+par done!
+
+Note: user must run 'Trace' for timing closure signoff.

@@ -1,0 +1,8 @@
+-d
+
+
+
+-g CfgMode:Disable
+-g RamCfg:NoReset
+-g DisableUES:TRUE
+-g ES:No
