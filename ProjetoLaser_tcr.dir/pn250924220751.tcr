@@ -1,0 +1,5 @@
+#Start recording tcl command: 9/24/2025 22:07:40
+#Project Location: C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser; Project name: ProjetoLaser
+prj_project open "C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.ldf"
+prj_project close
+#Stop recording: 9/24/2025 22:07:51
