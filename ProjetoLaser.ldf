@@ -2,9 +2,9 @@
 <BaliProject version="3.2" title="ProjetoLaser" device="LFE5U-45F-6BG381C" default_implementation="impl1">
     <Options/>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="lse" default_strategy="Strategy1">
-        <Options/>
+        <Options def_top="top"/>
         <Source name="top.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="top"/>
         </Source>
         <Source name="ProjetoLaser.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
