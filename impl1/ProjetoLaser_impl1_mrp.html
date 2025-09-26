@@ -25,25 +25,25 @@ Target Vendor:  LATTICE
 Target Device:  LFE5U-45FCABGA381
 Target Performance:   6
 Mapper:  sa5p00,  version:  Diamond (64-bit) 3.14.0.75.2
-Mapped on:  09/24/25  22:57:57
+Mapped on:  09/25/25  23:40:48
 
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
-   Number of registers:     41 out of 44457 (0%)
-      PFU registers:           41 out of 43848 (0%)
+   Number of registers:     75 out of 44457 (0%)
+      PFU registers:           75 out of 43848 (0%)
       PIO registers:            0 out of   609 (0%)
-   Number of SLICEs:        61 out of 21924 (0%)
-      SLICEs as Logic/ROM:     61 out of 21924 (0%)
+   Number of SLICEs:       235 out of 21924 (1%)
+      SLICEs as Logic/ROM:    235 out of 21924 (1%)
       SLICEs as RAM:            0 out of 16443 (0%)
-      SLICEs as Carry:         18 out of 21924 (0%)
-   Number of LUT4s:        120 out of 43848 (0%)
-      Number used as logic LUTs:         84
+      SLICEs as Carry:         21 out of 21924 (0%)
+   Number of LUT4s:        409 out of 43848 (1%)
+      Number used as logic LUTs:        367
       Number used as distributed RAM:     0
-      Number used as ripple logic:       36
+      Number used as ripple logic:       42
       Number used as shift registers:     0
    Number of PIO sites used: 4 out of 203 (2%)
    Number of block RAMs:  0 out of 108 (0%)
-   Number of GSRs:  0 out of 1 (0%)
+   Number of GSRs:  1 out of 1 (100%)
    JTAG used :      No
    Readback used :  No
    Oscillator used :  No
@@ -78,27 +78,53 @@ Mapped on:  09/24/25  22:57:57
    Number of Used DSP ALU Sites:  0 out of 72 (0 %)
    Number of Used DSP PRADD Sites:  0 out of 144 (0 %)
    Number of clocks:  1
-     Net fastclk_c: 24 loads, 24 rising, 0 falling (Driver: PIO fastclk )
-   Number of Clock Enables:  4
-     Net por_15__N_65: 9 loads, 9 LSLICEs
-     Net fastclk_c_enable_5: 2 loads, 2 LSLICEs
+     Net fastclk_c: 61 loads, 61 rising, 0 falling (Driver: PIO fastclk )
+   Number of Clock Enables:  22
+     Net fastclk_c_enable_8: 1 loads, 1 LSLICEs
+     Net cmd_busy_N_410: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_1: 1 loads, 1 LSLICEs
      Net fastclk_c_enable_2: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_27: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_6: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_10: 1 loads, 1 LSLICEs
      Net fastclk_c_enable_3: 1 loads, 1 LSLICEs
-   Number of LSRs:  2
-     Net n2468: 2 loads, 2 LSLICEs
-     Net n931: 9 loads, 9 LSLICEs
+     Net fastclk_c_enable_12: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_20: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_11: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_14: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_7: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_9: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_15: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_17: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_25: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_18: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_22: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_28: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_23: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_24: 1 loads, 1 LSLICEs
+   Number of LSRs:  9
+     Net n4523: 1 loads, 1 LSLICEs
+     Net hstate_4: 1 loads, 1 LSLICEs
+     Net tick: 9 loads, 9 LSLICEs
+     Net n3259: 2 loads, 2 LSLICEs
+     Net n5085: 7 loads, 7 LSLICEs
+     Net n5095: 2 loads, 2 LSLICEs
+     Net n9518: 3 loads, 3 LSLICEs
+     Net n7915: 1 loads, 1 LSLICEs
+     Net n5087: 1 loads, 1 LSLICEs
    Number of nets driven by tri-state buffers:  0
    Top 10 highest fanout non-clock nets:
-     Net por_15__N_65: 14 loads
-     Net state_1: 11 loads
-     Net state_2: 11 loads
-     Net state_0: 10 loads
-     Net n931: 9 loads
-     Net bitidx_0: 8 loads
-     Net cnt_2: 8 loads
-     Net cnt_5: 8 loads
-     Net cnt_6: 8 loads
-     Net bitidx_1: 7 loads
+     Net hstate_2: 55 loads
+     Net hstate_1: 52 loads
+     Net hstate_0: 51 loads
+     Net hstate_3: 49 loads
+     Net bstate_1: 39 loads
+     Net bstate_0: 36 loads
+     Net bstate_3: 35 loads
+     Net bstate_4: 35 loads
+     Net bstate_2: 28 loads
+     Net hstate_4: 27 loads
+
 
 
 
@@ -122,35 +148,120 @@ Mapped on:  09/24/25  22:57:57
 | IO Name             | Direction | Levelmode | IO         |
 |                     |           |  IO_TYPE  | Register   |
 +---------------------+-----------+-----------+------------+
-| scl                 | BIDIR     | LVCMOS33  |            |
-+---------------------+-----------+-----------+------------+
 | sda                 | BIDIR     | LVCMOS33  |            |
 +---------------------+-----------+-----------+------------+
-| rstn                | INPUT     | LVCMOS33  |            |
-
+| scl                 | BIDIR     | LVCMOS33  |            |
 +---------------------+-----------+-----------+------------+
 | fastclk             | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| rstn                | INPUT     | LVCMOS33  |            |
 +---------------------+-----------+-----------+------------+
 
 
 
 <A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
 
-Block GSR_INST undriven or does not drive anything - clipped.
+Signal n9542 was merged into signal bstate_2
+Signal n3 was merged into signal bstate_3
 Signal VCC_net undriven or does not drive anything - clipped.
-Signal cnt_348_add_4_1/S0 undriven or does not drive anything - clipped.
-Signal cnt_348_add_4_1/CI undriven or does not drive anything - clipped.
-Signal por_346_add_4_17/S1 undriven or does not drive anything - clipped.
-Signal por_346_add_4_17/CO undriven or does not drive anything - clipped.
-Signal cnt_348_add_4_17/S1 undriven or does not drive anything - clipped.
-Signal cnt_348_add_4_17/CO undriven or does not drive anything - clipped.
-Signal sda_iob/O undriven or does not drive anything - clipped.
+Signal _add_1_add_4_24/CO undriven or does not drive anything - clipped.
+Signal cnt_1257_add_4_1/S0 undriven or does not drive anything - clipped.
+Signal cnt_1257_add_4_1/CI undriven or does not drive anything - clipped.
+Signal _add_1_add_4_2/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_2/CI undriven or does not drive anything - clipped.
+Signal cnt_1257_add_4_17/S1 undriven or does not drive anything - clipped.
+Signal cnt_1257_add_4_17/CO undriven or does not drive anything - clipped.
 Signal scl_iob/O undriven or does not drive anything - clipped.
-Signal por_346_add_4_1/S0 undriven or does not drive anything - clipped.
-Signal por_346_add_4_1/CI undriven or does not drive anything - clipped.
+Block i17_1_lut_rep_168 was optimized away.
+Block i3_1_lut was optimized away.
 Block i2 was optimized away.
 
      
+
+
+
+<A name="mrp_gsr"></A><B><U><big>GSR Usage</big></U></B>
+---------
+
+GSR Component:
+   The Global Set Reset (GSR) resource has been used to implement a global reset
+        of the design. The reset signal used for GSR control is 'rstn_c'.
+        
+
+     GSR Property:
+
+   The design components with GSR property set to ENABLED will respond to global
+        set reset while the components with GSR property set to DISABLED will
+        not.
+        
+
+     Components with disabled GSR Property
+-------------------------------------
+
+     These components have the GSR property set to DISABLED. The components will
+     not respond to the reset signal 'rstn_c' via the GSR component.
+
+     Type and number of components of the type: 
+   Register = 8 
+
+     Type and instance name of component: 
+   Register : cmd_data_i0_i0
+   Register : cmd_i0_i0
+   Register : cmd_data_i0_i2
+   Register : cmd_data_i0_i4
+   Register : cmd_data_i0_i6
+   Register : cmd_data_i0_i1
+   Register : cmd_i0_i2
+   Register : cmd_i0_i1
+
+     Components with synchronous local reset also reset by asynchronous GSR
+----------------------------------------------------------------------
+
+     These components have the GSR property set to ENABLED and the local reset
+     is synchronous. The components will respond to the synchronous local reset
+     and to the unrelated asynchronous reset signal 'rstn_c' via the GSR
+     component.
+
+     Type and number of components of the type: 
+   Register = 35 
+
+     Type and instance name of component: 
+   Register : cmd_busy_246
+   Register : cmd_go_257
+   Register : cnt_1257__i0
+   Register : delay_cnt_i0
+   Register : delay_cnt_i1
+   Register : delay_cnt_i2
+   Register : delay_cnt_i4
+   Register : delay_cnt_i6
+   Register : delay_cnt_i8
+   Register : delay_cnt_i11
+   Register : delay_cnt_i13
+   Register : delay_cnt_i14
+   Register : delay_cnt_i16
+   Register : delay_cnt_i17
+   Register : delay_cnt_i20
+   Register : delay_cnt_i21
+   Register : delay_cnt_i22
+   Register : cnt_1257__i1
+   Register : bitidx_i0
+   Register : cnt_1257__i2
+
+   Register : cnt_1257__i3
+   Register : cnt_1257__i4
+   Register : cnt_1257__i5
+   Register : cnt_1257__i6
+   Register : cnt_1257__i7
+   Register : cnt_1257__i8
+   Register : cnt_1257__i9
+   Register : cnt_1257__i10
+   Register : cnt_1257__i11
+   Register : cnt_1257__i12
+   Register : cnt_1257__i13
+   Register : cnt_1257__i14
+   Register : cnt_1257__i15
+   Register : bitidx_i2
+   Register : bitidx_i1
 
 
 
@@ -159,8 +270,15 @@ Block i2 was optimized away.
 
    Total CPU Time: 0 secs  
    Total REAL Time: 0 secs  
-   Peak Memory Usage: 155 MB
+   Peak Memory Usage: 157 MB
         
+
+
+
+
+
+
+
 
 
 

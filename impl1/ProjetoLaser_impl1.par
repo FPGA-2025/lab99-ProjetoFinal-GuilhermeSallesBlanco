@@ -4,7 +4,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Sep 24 22:57:58 2025
+Thu Sep 25 23:40:49 2025
 
 C:/lscc/diamond/3.14/ispfpga\bin\nt64\par -f ProjetoLaser_impl1.p2t
 ProjetoLaser_impl1_map.ncd ProjetoLaser_impl1.dir ProjetoLaser_impl1.prf -gui
@@ -17,18 +17,18 @@ Preference file: ProjetoLaser_impl1.prf.
 Level/       Number       Worst        Timing       Worst        Timing       Run          NCD
 Cost [ncd]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
 ----------   --------     -----        ------       -----------  -----------  ----         ------
-5_1   *      0            32.711       0            0.194        0            07           Completed
+5_1   *      0            31.596       0            0.178        0            08           Completed
 
 * : Design saved.
 
-Total (real) run time for 1-seed: 7 secs 
+Total (real) run time for 1-seed: 8 secs 
 
 par done!
 
 Note: user must run 'Trace' for timing closure signoff.
 
 Lattice Place and Route Report for Design "ProjetoLaser_impl1_map.ncd"
-Wed Sep 24 22:57:58 2025
+Thu Sep 25 23:40:49 2025
 
 PAR: Place And Route Diamond (64-bit) 3.14.0.75.2.
 Command Line: par -w -l 5 -i 6 -t 1 -c 0 -e 0 -gui -msgset "C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml" -exp parUseNBR=1:parCDP=auto:parCDR=1:parPathBased=OFF:parASE=1:par_low_skew_clock_net=0 ProjetoLaser_impl1_map.ncd ProjetoLaser_impl1.dir/5_1.ncd ProjetoLaser_impl1.prf
@@ -55,33 +55,34 @@ Device utilization summary:
    PIO (prelim)       4/245           1% used
                       4/203           1% bonded
 
-   SLICE             61/21924        <1% used
+   SLICE            235/21924         1% used
+
+   GSR                1/1           100% used
 
 
-
-Number of Signals: 174
-Number of Connections: 424
+Number of Signals: 475
+Number of Connections: 1526
 
 Pin Constraint Summary:
    4 out of 4 pins locked (100% locked).
 
 The following 1 signal is selected to use the primary clock routing resources:
-    fastclk_c (driver: fastclk, clk/ce/sr load #: 24/0/0)
+    fastclk_c (driver: fastclk, clk/ce/sr load #: 61/0/0)
 
 
-No signal is selected as Global Set/Reset.
+Signal rstn_c is selected as Global Set/Reset.
 Starting Placer Phase 0.
-
-Finished Placer Phase 0.  REAL time: 0 secs 
+.........
+Finished Placer Phase 0.  REAL time: 2 secs 
 
 Starting Placer Phase 1.
-..................
-Placer score = 21477.
+.....................
+Placer score = 76359.
 Finished Placer Phase 1.  REAL time: 4 secs 
 
 Starting Placer Phase 2.
 .
-Placer score =  21420
+Placer score =  75613
 Finished Placer Phase 2.  REAL time: 4 secs 
 
 
@@ -108,7 +109,7 @@ Quadrant BL Clocks:
   PRIMARY  : 0 out of 16 (0%)
 
 Quadrant BR Clocks:
-  PRIMARY "fastclk_c" from comp "fastclk" on PIO site "P3 (PL68C)", CLK/CE/SR load = 24
+  PRIMARY "fastclk_c" from comp "fastclk" on PIO site "P3 (PL68C)", CLK/CE/SR load = 61
 
   PRIMARY  : 1 out of 16 (6%)
 
@@ -144,12 +145,12 @@ Total placer CPU time: 3 secs
 
 Dumping design to file ProjetoLaser_impl1.dir/5_1.ncd.
 
-0 connections routed; 424 unrouted.
+0 connections routed; 1526 unrouted.
 Starting router resource preassignment
 
 Completed router resource preassignment. Real time: 6 secs 
 
-Start NBR router at 22:58:04 09/24/25
+Start NBR router at 23:40:55 09/25/25
 
 *****************************************************************
 Info: NBR allows conflicts(one node used by more than one signal)
@@ -164,44 +165,41 @@ Note: NBR uses a different method to calculate timing slacks. The
       your design.                                               
 *****************************************************************
 
-Start NBR special constraint process at 22:58:04 09/24/25
+Start NBR special constraint process at 23:40:56 09/25/25
 
-Start NBR section for initial routing at 22:58:04 09/24/25
+Start NBR section for initial routing at 23:40:56 09/25/25
 Level 4, iteration 1
-13(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.908ns/0.000ns; real time: 6 secs 
+50(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.687ns/0.000ns; real time: 7 secs 
 
 Info: Initial congestion level at 75% usage is 0
 Info: Initial congestion area  at 75% usage is 0 (0.00%)
 
-Start NBR section for normal routing at 22:58:04 09/24/25
+Start NBR section for normal routing at 23:40:56 09/25/25
 Level 4, iteration 1
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+30(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.682ns/0.000ns; real time: 7 secs 
 Level 4, iteration 2
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+8(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.608ns/0.000ns; real time: 7 secs 
 Level 4, iteration 3
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 Level 4, iteration 4
 1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 Level 4, iteration 5
-1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
-Level 4, iteration 6
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 
-Start NBR section for setup/hold timing optimization with effort level 3 at 22:58:05 09/24/25
+Start NBR section for setup/hold timing optimization with effort level 3 at 23:40:56 09/25/25
 
-Start NBR section for re-routing at 22:58:05 09/24/25
+Start NBR section for re-routing at 23:40:56 09/25/25
 Level 4, iteration 1
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 
-Start NBR section for post-routing at 22:58:05 09/24/25
+Start NBR section for post-routing at 23:40:56 09/25/25
 
 End NBR router with 0 unrouted connection
 
@@ -209,17 +207,17 @@ NBR Summary
 -----------
   Number of unrouted connections : 0 (0.00%)
   Number of connections with timing violations : 0 (0.00%)
-  Estimated worst slack<setup> : 32.711ns
+  Estimated worst slack<setup> : 31.596ns
   Timing score<setup> : 0
 -----------
 Notes: The timing info is calculated for SETUP only and all PAR_ADJs are ignored.
 
 
 
-Total CPU time 6 secs 
+Total CPU time 7 secs 
 Total REAL time: 7 secs 
 Completely routed.
-End of route.  424 routed (100.00%); 0 unrouted.
+End of route.  1526 routed (100.00%); 0 unrouted.
 
 Hold time timing score: 0, hold timing errors: 0
 
@@ -233,14 +231,14 @@ All signals are completely routed.
 
 PAR_SUMMARY::Run status = Completed
 PAR_SUMMARY::Number of unrouted conns = 0
-PAR_SUMMARY::Worst  slack<setup/<ns>> = 32.711
+PAR_SUMMARY::Worst  slack<setup/<ns>> = 31.596
 PAR_SUMMARY::Timing score<setup/<ns>> = 0.000
-PAR_SUMMARY::Worst  slack<hold /<ns>> = 0.194
+PAR_SUMMARY::Worst  slack<hold /<ns>> = 0.178
 PAR_SUMMARY::Timing score<hold /<ns>> = 0.000
 PAR_SUMMARY::Number of errors = 0
 
-Total CPU  time to completion: 6 secs 
-Total REAL time to completion: 7 secs 
+Total CPU  time to completion: 7 secs 
+Total REAL time to completion: 8 secs 
 
 par done!
 

@@ -7,7 +7,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Sep 24 22:57:56 2025
+Thu Sep 25 23:40:47 2025
 
 
 Command Line:  synthesis -f ProjetoLaser_impl1_lattice.synproj -gui -msgset C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml 
@@ -82,10 +82,8 @@ Compile Design Begin
 Analyzing Verilog file c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v. VERI-1482
 Analyzing Verilog file C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v. VERI-1482
 Top module name (Verilog): top
-    <postMsg mid="35901018" type="Info"    dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(1): " arg1="top" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="1"  />
+    <postMsg mid="35901018" type="Info"    dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(9): " arg1="top" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="9"  />
     <postMsg mid="35901018" type="Info"    dynamic="2" navigation="2" arg0="C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(55): " arg1="BB" arg2="C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v" arg3="55"  />
-    <postMsg mid="35901209" type="Warning" dynamic="3" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(49): " arg1="32" arg2="16" arg3="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg4="49"  />
-    <postMsg mid="35901209" type="Warning" dynamic="3" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(86): " arg1="32" arg2="4" arg3="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg4="86"  />
 Last elaborated design is top()
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/sa5p00/data/sa5plib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/xo2c00/data/xo2clib.ngl'...
@@ -94,23 +92,18 @@ Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/or5g00/data/orc5glib.ngl'...
 Loading device for application map from file 'sa5p45.nph' in environment: C:/lscc/diamond/3.14/ispfpga.
 Package Status:                     Final          Version 1.50.
 Top-level module name = top.
-    <postMsg mid="35001747" type="Warning" dynamic="2" navigation="0" arg0="7" arg1="tx_byte"  />
-    <postMsg mid="35001748" type="Warning" dynamic="2" navigation="0" arg0="6" arg1="tx_byte"  />
-    <postMsg mid="35001747" type="Warning" dynamic="2" navigation="0" arg0="5" arg1="tx_byte"  />
-    <postMsg mid="35001748" type="Warning" dynamic="2" navigation="0" arg0="4" arg1="tx_byte"  />
-    <postMsg mid="35001747" type="Warning" dynamic="2" navigation="0" arg0="3" arg1="tx_byte"  />
-    <postMsg mid="35001747" type="Warning" dynamic="2" navigation="0" arg0="2" arg1="tx_byte"  />
-    <postMsg mid="35001748" type="Warning" dynamic="2" navigation="0" arg0="1" arg1="tx_byte"  />
-    <postMsg mid="35001747" type="Warning" dynamic="2" navigation="0" arg0="0" arg1="tx_byte"  />
-    <postMsg mid="35935034" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(22): " arg1="_103" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="22"  />
-    <postMsg mid="35935034" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(23): " arg1="" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="23"  />
+    <postMsg mid="35935034" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(32): " arg1="_289" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="32"  />
+    <postMsg mid="35935034" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(33): " arg1="" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="33"  />
 
 
 
-    <postMsg mid="35001263" type="Warning" dynamic="1" navigation="0" arg0="sda"  />
+
+ PMux Accepted with new tuning bstate_4__I_0_266    <postMsg mid="35001263" type="Warning" dynamic="1" navigation="0" arg0="sda"  />
     <postMsg mid="35001263" type="Warning" dynamic="1" navigation="0" arg0="scl"  />
-    <postMsg mid="35935013" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(115): " arg1="state__i3" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="115"  />
-GSR will not be inferred because no asynchronous signal was found in the netlist.
+    <postMsg mid="35935013" type="Warning" dynamic="2" navigation="2" arg0="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(331): " arg1="cmd_data_i0_i5" arg2="c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v" arg3="331"  />
+GSR instance connected to net rstn_c.
+    <postMsg mid="35001779" type="Warning" dynamic="1" navigation="0" arg0="cmd_i0_i0"  />
+Duplicate register/latch removal. cmd_data_i0_i2 is a one-to-one match with cmd_data_i0_i3.
 Applying 200.000000 MHz constraint to all clocks
 
     <postMsg mid="35001611" type="Warning" dynamic="0" navigation="0"  />
@@ -126,48 +119,57 @@ Running DRC...
 DRC complete with no errors or warnings
 
 Design Results:
-    152 blocks expanded
+    508 blocks expanded
 completed the first expansion
 All blocks are expanded and NGD expansion is successful.
 Writing NGD file ProjetoLaser_impl1.ngd.
 
 ################### Begin Area Report (top)######################
-Number of register bits => 41 of 44457 (0 % )
+Number of register bits => 75 of 44457 (0 % )
 BB => 2
-CCU2C => 18
+CCU2C => 21
 FD1P3AX => 18
+FD1P3AY => 4
 FD1P3IX => 3
-FD1S3AX => 4
-FD1S3IX => 16
+FD1P3JX => 4
+FD1S3AX => 15
+FD1S3IX => 31
 GSR => 1
 IB => 2
-LUT4 => 84
-PFUMX => 1
+L6MUX21 => 3
+LUT4 => 367
+PFUMX => 34
 ################### End Area Report ##################
 
 ################### Begin Clock Report ######################
 Clock Nets
 Number of Clocks: 1
-  Net : fastclk_c, loads : 41
+  Net : fastclk_c, loads : 75
 Clock Enable Nets
-Number of Clock Enables: 4
-Top 4 highest fanout Clock Enables:
-  Net : por_15__N_65, loads : 21
-  Net : fastclk_c_enable_5, loads : 3
-  Net : fastclk_c_enable_2, loads : 1
-  Net : fastclk_c_enable_3, loads : 1
+Number of Clock Enables: 22
+Top 10 highest fanout Clock Enables:
+  Net : cmd_busy_N_410, loads : 9
+  Net : fastclk_c_enable_12, loads : 4
+  Net : fastclk_c_enable_20, loads : 3
+  Net : fastclk_c_enable_27, loads : 3
+  Net : fastclk_c_enable_3, loads : 2
+  Net : fastclk_c_enable_14, loads : 2
+  Net : fastclk_c_enable_22, loads : 2
+  Net : fastclk_c_enable_10, loads : 1
+  Net : fastclk_c_enable_6, loads : 1
+  Net : fastclk_c_enable_17, loads : 1
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : por_15__N_65, loads : 21
-  Net : n931, loads : 16
-  Net : state_2, loads : 11
-  Net : state_1, loads : 11
-  Net : state_0, loads : 10
-  Net : cnt_6, loads : 8
-  Net : cnt_5, loads : 8
-  Net : cnt_2, loads : 8
-  Net : bitidx_0, loads : 8
-  Net : cnt_4, loads : 7
+  Net : hstate_2, loads : 55
+  Net : hstate_1, loads : 52
+  Net : hstate_0, loads : 51
+  Net : hstate_3, loads : 49
+  Net : bstate_1, loads : 39
+  Net : bstate_4, loads : 36
+  Net : bstate_0, loads : 36
+  Net : bstate_3, loads : 35
+  Net : bstate_2, loads : 28
+  Net : hstate_4, loads : 27
 ################### End Clock Report ##################
 
 Timing Report Summary
@@ -177,7 +179,7 @@ Constraint                              |   Constraint|       Actual|Levels
 --------------------------------------------------------------------------------
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk0 [get_nets fastclk_c]               |  200.000 MHz|   93.318 MHz|     8 *
+clk0 [get_nets fastclk_c]               |  200.000 MHz|   98.193 MHz|    10 *
                                         |             |             |
 --------------------------------------------------------------------------------
 
@@ -185,10 +187,10 @@ clk0 [get_nets fastclk_c]               |  200.000 MHz|   93.318 MHz|     8 *
 1 constraints not met.
 
 
-Peak Memory Usage: 94.035  MB
+Peak Memory Usage: 100.477  MB
 
 --------------------------------------------------------------
-Elapsed CPU time for LSE flow : 0.500  secs
+Elapsed CPU time for LSE flow : 0.891  secs
 --------------------------------------------------------------
 
 map -a "ECP5U" -p LFE5U-45F -t CABGA381 -s 6 -oc Commercial   "ProjetoLaser_impl1.ngd" -o "ProjetoLaser_impl1_map.ncd" -pr "ProjetoLaser_impl1.prf" -mp "ProjetoLaser_impl1.mrp" -lpf "C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/impl1/ProjetoLaser_impl1.lpf" -lpf "C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.lpf"             
@@ -221,27 +223,27 @@ Removing unused logic...
 
 Optimizing...
 
-80 CCU2 constant inputs absorbed.
+87 CCU2 constant inputs absorbed.
 
 
 
 
 Design Summary:
-   Number of registers:     41 out of 44457 (0%)
-      PFU registers:           41 out of 43848 (0%)
+   Number of registers:     75 out of 44457 (0%)
+      PFU registers:           75 out of 43848 (0%)
       PIO registers:            0 out of   609 (0%)
-   Number of SLICEs:        61 out of 21924 (0%)
-      SLICEs as Logic/ROM:     61 out of 21924 (0%)
+   Number of SLICEs:       235 out of 21924 (1%)
+      SLICEs as Logic/ROM:    235 out of 21924 (1%)
       SLICEs as RAM:            0 out of 16443 (0%)
-      SLICEs as Carry:         18 out of 21924 (0%)
-   Number of LUT4s:        120 out of 43848 (0%)
-      Number used as logic LUTs:         84
+      SLICEs as Carry:         21 out of 21924 (0%)
+   Number of LUT4s:        409 out of 43848 (1%)
+      Number used as logic LUTs:        367
       Number used as distributed RAM:     0
-      Number used as ripple logic:       36
+      Number used as ripple logic:       42
       Number used as shift registers:     0
    Number of PIO sites used: 4 out of 203 (2%)
    Number of block RAMs:  0 out of 108 (0%)
-   Number of GSRs:  0 out of 1 (0%)
+   Number of GSRs:  1 out of 1 (100%)
    JTAG used :      No
    Readback used :  No
    Oscillator used :  No
@@ -273,27 +275,52 @@ Design Summary:
    Number of Used DSP ALU Sites:  0 out of 72 (0 %)
    Number of Used DSP PRADD Sites:  0 out of 144 (0 %)
    Number of clocks:  1
-     Net fastclk_c: 24 loads, 24 rising, 0 falling (Driver: PIO fastclk )
-   Number of Clock Enables:  4
-     Net por_15__N_65: 9 loads, 9 LSLICEs
-     Net fastclk_c_enable_5: 2 loads, 2 LSLICEs
+     Net fastclk_c: 61 loads, 61 rising, 0 falling (Driver: PIO fastclk )
+   Number of Clock Enables:  22
+     Net fastclk_c_enable_8: 1 loads, 1 LSLICEs
+     Net cmd_busy_N_410: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_1: 1 loads, 1 LSLICEs
      Net fastclk_c_enable_2: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_27: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_6: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_10: 1 loads, 1 LSLICEs
      Net fastclk_c_enable_3: 1 loads, 1 LSLICEs
-   Number of LSRs:  2
-     Net n2468: 2 loads, 2 LSLICEs
-     Net n931: 9 loads, 9 LSLICEs
+     Net fastclk_c_enable_12: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_20: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_11: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_14: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_7: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_9: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_15: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_17: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_25: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_18: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_22: 2 loads, 2 LSLICEs
+     Net fastclk_c_enable_28: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_23: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_24: 1 loads, 1 LSLICEs
+   Number of LSRs:  9
+     Net n4523: 1 loads, 1 LSLICEs
+     Net hstate_4: 1 loads, 1 LSLICEs
+     Net tick: 9 loads, 9 LSLICEs
+     Net n3259: 2 loads, 2 LSLICEs
+     Net n5085: 7 loads, 7 LSLICEs
+     Net n5095: 2 loads, 2 LSLICEs
+     Net n9518: 3 loads, 3 LSLICEs
+     Net n7915: 1 loads, 1 LSLICEs
+     Net n5087: 1 loads, 1 LSLICEs
    Number of nets driven by tri-state buffers:  0
    Top 10 highest fanout non-clock nets:
-     Net por_15__N_65: 14 loads
-     Net state_1: 11 loads
-     Net state_2: 11 loads
-     Net state_0: 10 loads
-     Net n931: 9 loads
-     Net bitidx_0: 8 loads
-     Net cnt_2: 8 loads
-     Net cnt_5: 8 loads
-     Net cnt_6: 8 loads
-     Net bitidx_1: 7 loads
+     Net hstate_2: 55 loads
+     Net hstate_1: 52 loads
+     Net hstate_0: 51 loads
+     Net hstate_3: 49 loads
+     Net bstate_1: 39 loads
+     Net bstate_0: 36 loads
+     Net bstate_3: 35 loads
+     Net bstate_4: 35 loads
+     Net bstate_2: 28 loads
+     Net hstate_4: 27 loads
  
 
    Number of warnings:  0
@@ -303,7 +330,7 @@ Design Summary:
 
 Total CPU Time: 0 secs  
 Total REAL Time: 0 secs  
-Peak Memory Usage: 155 MB
+Peak Memory Usage: 157 MB
 
 Dumping design to file ProjetoLaser_impl1_map.ncd.
 
@@ -318,7 +345,7 @@ Removing old design directory at request of -rem command line option to this pro
 Running par. Please wait . . .
 
 Lattice Place and Route Report for Design "ProjetoLaser_impl1_map.ncd"
-Wed Sep 24 22:57:58 2025
+Thu Sep 25 23:40:49 2025
 
 PAR: Place And Route Diamond (64-bit) 3.14.0.75.2.
 Command Line: par -w -l 5 -i 6 -t 1 -c 0 -e 0 -gui -msgset "C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml" -exp parUseNBR=1:parCDP=auto:parCDR=1:parPathBased=OFF:parASE=1:par_low_skew_clock_net=0 ProjetoLaser_impl1_map.ncd ProjetoLaser_impl1.dir/5_1.ncd ProjetoLaser_impl1.prf
@@ -345,33 +372,34 @@ Device utilization summary:
    PIO (prelim)       4/245           1% used
                       4/203           1% bonded
 
-   SLICE             61/21924        <1% used
+   SLICE            235/21924         1% used
+
+   GSR                1/1           100% used
 
 
-
-Number of Signals: 174
-Number of Connections: 424
+Number of Signals: 475
+Number of Connections: 1526
 
 Pin Constraint Summary:
    4 out of 4 pins locked (100% locked).
 
 The following 1 signal is selected to use the primary clock routing resources:
-    fastclk_c (driver: fastclk, clk/ce/sr load #: 24/0/0)
+    fastclk_c (driver: fastclk, clk/ce/sr load #: 61/0/0)
 
 
-No signal is selected as Global Set/Reset.
+Signal rstn_c is selected as Global Set/Reset.
 Starting Placer Phase 0.
-
-Finished Placer Phase 0.  REAL time: 0 secs 
+.........
+Finished Placer Phase 0.  REAL time: 2 secs 
 
 Starting Placer Phase 1.
-..................
-Placer score = 21477.
+.....................
+Placer score = 76359.
 Finished Placer Phase 1.  REAL time: 4 secs 
 
 Starting Placer Phase 2.
 .
-Placer score =  21420
+Placer score =  75613
 Finished Placer Phase 2.  REAL time: 4 secs 
 
 
@@ -398,7 +426,7 @@ Quadrant BL Clocks:
   PRIMARY  : 0 out of 16 (0%)
 
 Quadrant BR Clocks:
-  PRIMARY "fastclk_c" from comp "fastclk" on PIO site "P3 (PL68C)", CLK/CE/SR load = 24
+  PRIMARY "fastclk_c" from comp "fastclk" on PIO site "P3 (PL68C)", CLK/CE/SR load = 61
 
   PRIMARY  : 1 out of 16 (6%)
 
@@ -434,12 +462,12 @@ Total placer CPU time: 3 secs
 
 Dumping design to file ProjetoLaser_impl1.dir/5_1.ncd.
 
-0 connections routed; 424 unrouted.
+0 connections routed; 1526 unrouted.
 Starting router resource preassignment
 
 Completed router resource preassignment. Real time: 6 secs 
 
-Start NBR router at 22:58:04 09/24/25
+Start NBR router at 23:40:55 09/25/25
 
 *****************************************************************
 Info: NBR allows conflicts(one node used by more than one signal)
@@ -454,44 +482,41 @@ Note: NBR uses a different method to calculate timing slacks. The
       your design.                                               
 *****************************************************************
 
-Start NBR special constraint process at 22:58:04 09/24/25
+Start NBR special constraint process at 23:40:56 09/25/25
 
-Start NBR section for initial routing at 22:58:04 09/24/25
+Start NBR section for initial routing at 23:40:56 09/25/25
 Level 4, iteration 1
-13(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.908ns/0.000ns; real time: 6 secs 
+50(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.687ns/0.000ns; real time: 7 secs 
 
 Info: Initial congestion level at 75% usage is 0
 Info: Initial congestion area  at 75% usage is 0 (0.00%)
 
-Start NBR section for normal routing at 22:58:04 09/24/25
+Start NBR section for normal routing at 23:40:56 09/25/25
 Level 4, iteration 1
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+30(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.682ns/0.000ns; real time: 7 secs 
 Level 4, iteration 2
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+8(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.608ns/0.000ns; real time: 7 secs 
 Level 4, iteration 3
-2(0.00%) conflicts; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 Level 4, iteration 4
 1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 Level 4, iteration 5
-1(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
-Level 4, iteration 6
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 
-Start NBR section for setup/hold timing optimization with effort level 3 at 22:58:05 09/24/25
+Start NBR section for setup/hold timing optimization with effort level 3 at 23:40:56 09/25/25
 
-Start NBR section for re-routing at 22:58:05 09/24/25
+Start NBR section for re-routing at 23:40:56 09/25/25
 Level 4, iteration 1
 0(0.00%) conflict; 0(0.00%) untouched conn; 0 (nbr) score; 
-Estimated worst slack/total negative slack<setup>: 32.711ns/0.000ns; real time: 7 secs 
+Estimated worst slack/total negative slack<setup>: 31.596ns/0.000ns; real time: 7 secs 
 
-Start NBR section for post-routing at 22:58:05 09/24/25
+Start NBR section for post-routing at 23:40:56 09/25/25
 
 End NBR router with 0 unrouted connection
 
@@ -499,17 +524,17 @@ NBR Summary
 -----------
   Number of unrouted connections : 0 (0.00%)
   Number of connections with timing violations : 0 (0.00%)
-  Estimated worst slack<setup> : 32.711ns
+  Estimated worst slack<setup> : 31.596ns
   Timing score<setup> : 0
 -----------
 Notes: The timing info is calculated for SETUP only and all PAR_ADJs are ignored.
 
 
 
-Total CPU time 6 secs 
+Total CPU time 7 secs 
 Total REAL time: 7 secs 
 Completely routed.
-End of route.  424 routed (100.00%); 0 unrouted.
+End of route.  1526 routed (100.00%); 0 unrouted.
 
 Hold time timing score: 0, hold timing errors: 0
 
@@ -520,14 +545,14 @@ Dumping design to file ProjetoLaser_impl1.dir/5_1.ncd.
 
 PAR_SUMMARY::Run status = Completed
 PAR_SUMMARY::Number of unrouted conns = 0
-PAR_SUMMARY::Worst  slack<setup/<ns>> = 32.711
+PAR_SUMMARY::Worst  slack<setup/<ns>> = 31.596
 PAR_SUMMARY::Timing score<setup/<ns>> = 0.000
-PAR_SUMMARY::Worst  slack<hold /<ns>> = 0.194
+PAR_SUMMARY::Worst  slack<hold /<ns>> = 0.178
 PAR_SUMMARY::Timing score<hold /<ns>> = 0.000
 PAR_SUMMARY::Number of errors = 0
 
-Total CPU  time to completion: 6 secs 
-Total REAL time to completion: 7 secs 
+Total CPU  time to completion: 7 secs 
+Total REAL time to completion: 8 secs 
 
 par done!
 
@@ -564,7 +589,7 @@ Setup and Hold Report
 
 --------------------------------------------------------------------------------
 Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.14.0.75.2
-Wed Sep 24 22:58:06 2025
+Thu Sep 25 23:40:58 2025
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -593,11 +618,11 @@ Timing summary (Setup):
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 1466 paths, 1 nets, and 416 connections (98.11% coverage)
+Constraints cover 4497 paths, 1 nets, and 1510 connections (98.95% coverage)
 
 --------------------------------------------------------------------------------
 Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.14.0.75.2
-Wed Sep 24 22:58:06 2025
+Thu Sep 25 23:40:58 2025
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -626,7 +651,7 @@ Timing summary (Hold):
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 1466 paths, 1 nets, and 416 connections (98.11% coverage)
+Constraints cover 4497 paths, 1 nets, and 1510 connections (98.95% coverage)
 
 
 
@@ -640,9 +665,9 @@ Cumulative negative slack: 0 (0+0)
 
 --------------------------------------------------------------------------------
 
-Total CPU Time: 0 secs 
+Total CPU Time: 1 secs 
 Total REAL Time: 0 secs 
-Peak Memory Usage: 217 MB
+Peak Memory Usage: 219 MB
 
 
 tmcheck -par "ProjetoLaser_impl1.par" -nocheck
@@ -724,5 +749,5 @@ Bitstream Status: Final           Version 10.27.
  
 Saving bit stream in "ProjetoLaser_impl1.bit".
 Total CPU Time: 2 secs 
-Total REAL Time: 2 secs 
-Peak Memory Usage: 358 MB
+Total REAL Time: 3 secs 
+Peak Memory Usage: 359 MB

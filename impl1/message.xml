@@ -24,10 +24,10 @@
         <Message>
             <ID>35901018</ID>
             <Severity>Info</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(1): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(9): </Dynamic>
             <Dynamic>top</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>1</Navigation>
+            <Navigation>9</Navigation>
         </Message>
         <Message>
             <ID>35901018</ID>
@@ -38,91 +38,20 @@
             <Navigation>55</Navigation>
         </Message>
         <Message>
-            <ID>35901209</ID>
+            <ID>35935034</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(49): </Dynamic>
-            <Dynamic>32</Dynamic>
-            <Dynamic>16</Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(32): </Dynamic>
+            <Dynamic>_289</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>49</Navigation>
-        </Message>
-        <Message>
-            <ID>35901209</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(86): </Dynamic>
-            <Dynamic>32</Dynamic>
-            <Dynamic>4</Dynamic>
-            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>86</Navigation>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>7</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>6</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>5</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>4</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>3</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>2</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001748</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>1</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
-        </Message>
-        <Message>
-            <ID>35001747</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>0</Dynamic>
-            <Dynamic>tx_byte</Dynamic>
+            <Navigation>32</Navigation>
         </Message>
         <Message>
             <ID>35935034</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(22): </Dynamic>
-            <Dynamic>_103</Dynamic>
-            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>22</Navigation>
-        </Message>
-        <Message>
-            <ID>35935034</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(23): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(33): </Dynamic>
             <Dynamic></Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>23</Navigation>
-        </Message>
-        <Message>
-            <ID>35001263</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>sda</Dynamic>
+            <Navigation>33</Navigation>
         </Message>
         <Message>
             <ID>35001263</ID>
@@ -132,10 +61,15 @@
         <Message>
             <ID>35935013</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(115): </Dynamic>
-            <Dynamic>state__i3</Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(331): </Dynamic>
+            <Dynamic>cmd_data_i0_i5</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>115</Navigation>
+            <Navigation>331</Navigation>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>cmd_i0_i0</Dynamic>
         </Message>
         <Message>
             <ID>35001611</ID>
