@@ -1,10 +1,11 @@
+// IntegraÃ§Ã£o do mÃ³dulo VL53L0X com FPGA
 module top(
 	input wire fastclk, // 25 MHz
 	input wire rstn,
 	inout wire sda,
 	inout wire scl
 );
-	// Endereço do VL53L0X = 0x29
+	// Endereï¿½o do VL53L0X = 0x29
 	localparam integer HALF = 125; // SCL de 100kHz
 	
 	reg [15:0] por = 16'd0;
@@ -14,7 +15,7 @@ module top(
 
 	reg sda_t, scl_t; // Sinais tri-state control
 	// sda_t = 1 ou scl_t = 1 -> pino solto, essencialmente funciona como 1
-	// sda_t = 0 ou scl_t = 0 -> força nível baixo, ou 0
+	// sda_t = 0 ou scl_t = 0 -> forï¿½a nï¿½vel baixo, ou 0
 	
 	wire sda_in, scl_in; // Leitura do barramento
 	
@@ -24,7 +25,7 @@ module top(
 	
 	reg [15:0] cnt = 0; 	// Contador
 	reg [3:0] state = 0; 	// Estados
-	reg [3:0] bitidx = 7; 	// Índice de bits
+	reg [3:0] bitidx = 7; 	// ï¿½ndice de bits
 	reg [7:0] tx_byte; 	// Byte a ser transmitido
 	localparam [6:0]  ADDRESS7 = 7'h29; // VL53L0X
 	localparam [7:0]  ADDRESSW = {ADDRESS7, 1'b0};
