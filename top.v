@@ -1,331 +1,250 @@
-// VL53L0X - Leitura contínua de distância (mm) via I2C
-// Verilog-2001 - compatível com Lattice Diamond
-// [1] Datasheet VL53L0X DS11555 (I2C addr, interface, timing)
-// [2] UM2039 API User Manual (Start/Read/Clear fluxos)
-
+// Ordem de leitura: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [STOP] [START] [ADDRESSR] [ACK] [DATA(7:0)] [Am] [STOP]
+// Ordem de escrita: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [DATA(7:0)] [ACK] [STOP]
 module top(
-    input  wire fastclk,   // 25 MHz
-    input  wire rstn,      // reset ativo em 0
-    inout  wire sda,
-    inout  wire scl
+	input wire fastclk, // 25 MHz
+	input wire rstn,
+	inout wire sda,
+	inout wire scl
 );
+	// Endereco do VL53L0X = 0x29
+	localparam integer HALF = 125; // SCL de 100kHz
+	
+	reg [15:0] por = 16'd0;
+	wire rst = (!rstn) | (por != 16'hFFFF);
+	always @(posedge fastclk)
+		if (por != 16'hFFFF) por <= por + 16'd1;
 
-  // ---------------------- Param e temporização I2C --------------------
-  // I2C ~100 kHz com fastclk=25 MHz => HALF=125
-  localparam integer HALF = 125;
-  reg [15:0] cnt;
-  wire tick = (cnt == HALF-1);
-
-  always @(posedge fastclk or negedge rstn) begin
-    if(!rstn) cnt <= 16'd0;
-    else      cnt <= tick ? 16'd0 : cnt + 16'd1;
-  end
-
-  // ---------------------- Open-drain SDA/SCL --------------------------
-  reg sda_t, scl_t;                  // 1 = solta linha, 0 = força 0
-  wire sda_in, scl_in;
-
-  // Buffers bidirecionais
-  BB sda_iob (.I(1'b0), .T(sda_t), .O(sda_in), .B(sda));
-  BB scl_iob (.I(1'b0), .T(scl_t), .O(scl_in), .B(scl));
-
-  initial begin
-    sda_t = 1'b1; // linhas soltas (1) ao ligar
-    scl_t = 1'b1;
-  end
-
-  // ---------------------- Endereços e registradores -------------------
-  localparam [6:0] ADR7   = 7'h29;            // 0x29 (7-bit)
-  localparam [7:0] ADR_W  = {ADR7,1'b0};      // 0x52 write
-  localparam [7:0] ADR_R  = {ADR7,1'b1};      // 0x53 read
-
-  localparam [7:0] REG_SYSRANGE_START = 8'h00; // 0x02 => contínuo [2]
-  localparam [7:0] REG_RANGE_MSB      = 8'h1E; // distância MSB (mm) (uso comum)
-  localparam [7:0] REG_RANGE_LSB      = 8'h1F; // distância LSB (mm) (uso comum)
-
-  // Resultados
-  reg [15:0] distance_mm;
-  reg        distance_valid;
-
-  // ---------------------- Motor de bit-banging I2C --------------------
-  // Comandos atômicos: START, REP_START, WRITE(8), READ_ACK, READ_NACK, STOP
-  // Handshake:
-  //   - Alto nível dirige: cmd, cmd_data, cmd_go (pulso)
-  //   - Este motor: gera cmd_busy/cmd_done; mantém got_ack/rd_data
-  localparam [2:0]
-    CMD_NONE      = 3'd0,
-    CMD_START     = 3'd1,
-    CMD_REP_START = 3'd2,
-    CMD_WRITE     = 3'd3,
-    CMD_READ_ACK  = 3'd4,
-    CMD_READ_NACK = 3'd5,
-    CMD_STOP      = 3'd6;
-
-  reg  [2:0] cmd;
-  reg        cmd_go;        // PULSO gerado SOMENTE pela FSM de alto nível
-  reg  [7:0] cmd_data;
-
-  reg        cmd_busy;
-  reg        cmd_done;
-  reg  [7:0] rd_data;
-  reg        got_ack;       // 0 = ACK, 1 = NACK (válido após WRITE)
-
-  // Latches internos (evita hazard se cmd mudar)
-  reg [2:0]  cmd_l;
-  reg [7:0]  data_l;
-
-  // Estados do motor
-  localparam [4:0]
-    B_IDLE   = 5'd0,
-    B_SA0    = 5'd1,  // START
-    B_SA1    = 5'd2,
-    B_RS0    = 5'd3,  // REPEATED START
-    B_RS1    = 5'd4,
-    B_WSET   = 5'd5,  // WRITE bits
-    B_WHIGH  = 5'd6,
-    B_WLOW   = 5'd7,
-    B_ACK0   = 5'd8,  // ACK
-    B_ACK1   = 5'd9,
-    B_ACK2   = 5'd10,
-    B_RSET   = 5'd11, // READ bits
-    B_RHIGH  = 5'd12,
-    B_RLOW   = 5'd13,
-    B_AW0    = 5'd14, // enviar ACK/NACK após leitura
-    B_AW1    = 5'd15,
-    B_AW2    = 5'd16,
-    B_P0     = 5'd17, // STOP
-    B_P1     = 5'd18;
-
-  reg [4:0] bstate;
-  reg [2:0] bitidx;
-  reg [7:0] shreg;
-  reg       ack_bit;  // 0=ACK, 1=NACK (após leitura)
-
-  initial begin
-    cmd      = CMD_NONE; cmd_go = 1'b0; cmd_data = 8'h00;
-    cmd_busy = 1'b0;     cmd_done=1'b0; got_ack  = 1'b1;
-    bstate   = B_IDLE;   bitidx  = 3'd7; shreg   = 8'h00; ack_bit = 1'b1;
-  end
-
-  // Importante: APENAS ESTE always dirige sda_t/scl_t e executa o comando.
-  // Ele NÃO escreve cmd_go/cmd/cmd_data (evita múltiplos drivers).
-  always @(posedge fastclk or negedge rstn) begin
-    if(!rstn) begin
-      sda_t   <= 1'b1; scl_t <= 1'b1;
-      cmd_busy<= 1'b0; cmd_done <= 1'b0;
-      bstate  <= B_IDLE; bitidx <= 3'd7; shreg<=8'h00;
-      got_ack <= 1'b1;   ack_bit<= 1'b1;
-    end else begin
-      cmd_done <= 1'b0;
-
-      // Lança comando quando requisitado e livre
-      if(cmd_go && !cmd_busy && (bstate==B_IDLE)) begin
-        cmd_busy <= 1'b1;
-        cmd_l    <= cmd;
-        data_l   <= cmd_data;
-        case(cmd)
-          CMD_START:     bstate <= B_SA0;
-          CMD_REP_START: bstate <= B_RS0;
-          CMD_WRITE:     begin shreg<=cmd_data; bitidx<=3'd7; bstate<=B_WSET; end
-          CMD_READ_ACK:  begin bitidx<=3'd7;    bstate<=B_RSET; ack_bit<=1'b0; end
-          CMD_READ_NACK: begin bitidx<=3'd7;    bstate<=B_RSET; ack_bit<=1'b1; end
-          CMD_STOP:      bstate <= B_P0;
-          default:       begin cmd_busy<=1'b0; cmd_done<=1'b1; end
-        endcase
-      end
-
-      // Execução passo-a-passo (gated por 'tick' p/ duty uniforme)
-      case(bstate)
-        // START: SDA 1->0 com SCL=1
-        B_SA0:   if(tick) begin scl_t<=1'b1; sda_t<=1'b0; bstate<=B_SA1; end
-        B_SA1:   if(tick) begin bstate<=B_IDLE; cmd_busy<=1'b0; cmd_done<=1'b1; end
-
-        // REPEATED START
-        B_RS0:   if(tick) begin scl_t<=1'b1; sda_t<=1'b1; bstate<=B_RS1; end
-        B_RS1:   if(tick) begin sda_t<=1'b0; bstate<=B_IDLE; cmd_busy<=1'b0; cmd_done<=1'b1; end
-
-        // WRITE 8 bits
-        B_WSET:  if(tick) begin scl_t<=1'b0; sda_t<= shreg[bitidx] ? 1'b1 : 1'b0; bstate<=B_WHIGH; end
-        B_WHIGH: if(tick) begin scl_t<=1'b1; bstate<=B_WLOW; end
-        B_WLOW:  if(tick) begin
-                   scl_t<=1'b0;
-                   if(bitidx==3'd0) bstate<=B_ACK0;
-                   else begin bitidx<=bitidx-3'd1; bstate<=B_WSET; end
-                 end
-
-        // ACK do alvo (apenas após WRITE)
-        B_ACK0:  if(tick) begin sda_t<=1'b1; bstate<=B_ACK1; end     // solta SDA
-        B_ACK1:  if(tick) begin scl_t<=1'b1; got_ack<=sda_in; bstate<=B_ACK2; end
-        B_ACK2:  if(tick) begin scl_t<=1'b0; bstate<=B_IDLE; cmd_busy<=1'b0; cmd_done<=1'b1; end
-
-        // READ 8 bits
-        B_RSET:  if(tick) begin scl_t<=1'b0; sda_t<=1'b1; bstate<=B_RHIGH; end
-        B_RHIGH: if(tick) begin scl_t<=1'b1; shreg[bitidx]<=sda_in; bstate<=B_RLOW; end
-        B_RLOW:  if(tick) begin
-                   scl_t<=1'b0;
-                   if(bitidx==3'd0) begin rd_data<=shreg; bstate<=B_AW0; end
-                   else begin bitidx<=bitidx-3'd1; bstate<=B_RSET; end
-                 end
-
-        // Envia ACK/NACK após leitura
-        B_AW0:   if(tick) begin scl_t<=1'b0; sda_t<= ack_bit ? 1'b1 : 1'b0; bstate<=B_AW1; end
-        B_AW1:   if(tick) begin scl_t<=1'b1; bstate<=B_AW2; end
-        B_AW2:   if(tick) begin scl_t<=1'b0; sda_t<=1'b1; bstate<=B_IDLE; cmd_busy<=1'b0; cmd_done<=1'b1; end
-
-        // STOP: SDA 0->1 com SCL=1
-        B_P0:    if(tick) begin sda_t<=1'b0; scl_t<=1'b1; bstate<=B_P1; end
-        B_P1:    if(tick) begin sda_t<=1'b1; bstate<=B_IDLE; cmd_busy<=1'b0; cmd_done<=1'b1; end
-
-        default: ;
-      endcase
-    end
-  end
-
-  // ------------------------ FSM de alto nível ------------------------
-  // Gera apenas: cmd, cmd_data, cmd_go (um pulso por comando)
-  // Checa ACK após cada WRITE; em NACK -> STOP e retenta após um atraso.
-  localparam [4:0]
-    H_RESET     = 5'd0,
-    H_BOOTWAIT  = 5'd1,  // espera >2ms após power-up
-    // Config contínua: START, 0x52, 0x00, 0x02, STOP
-    H_CFG_S     = 5'd2,
-    H_CFG_AW    = 5'd3,
-    H_CFG_REG   = 5'd4,
-    H_CFG_DAT   = 5'd5,
-    H_CFG_P     = 5'd6,
-    H_CFG_DONE  = 5'd7,
-    // Loop de leitura: START, 0x52, 0x1E, REP, 0x53, R(ACK), R(NACK), STOP
-    H_L_S       = 5'd8,
-    H_L_AW      = 5'd9,
-    H_L_PTR     = 5'd10,
-    H_L_RS      = 5'd11,
-    H_L_AR      = 5'd12,
-    H_L_RMSB    = 5'd13,
-    H_L_RLSB    = 5'd14,
-    H_L_P       = 5'd15,
-    H_L_PUB     = 5'd16,
-    // Retentativa
-    H_RETRY_WAIT= 5'd17;
-
-  reg [4:0] hstate;
-  reg [7:0] msb, lsb;
-
-  // atraso de boot e de retry (~ms) com fastclk=25 MHz
-  reg [22:0] delay_cnt; // 2^23/25e6 ~ 0.335 s máx; usaremos valores pequenos
-  wire delay_done = (delay_cnt == 23'd0);
-
-  // helper: emitir pulso de comando
-  task GO_START;   begin cmd <= CMD_START;     cmd_data <= 8'h00; cmd_go <= 1'b1; end endtask
-  task GO_REP;     begin cmd <= CMD_REP_START; cmd_data <= 8'h00; cmd_go <= 1'b1; end endtask
-  task GO_STOP;    begin cmd <= CMD_STOP;      cmd_data <= 8'h00; cmd_go <= 1'b1; end endtask
-  task GO_W(input [7:0] d); begin cmd <= CMD_WRITE;     cmd_data <= d; cmd_go <= 1'b1; end endtask
-  task GO_RA;      begin cmd <= CMD_READ_ACK;  cmd_data <= 8'h00; cmd_go <= 1'b1; end endtask
-  task GO_RN;      begin cmd <= CMD_READ_NACK; cmd_data <= 8'h00; cmd_go <= 1'b1; end endtask
-
-  initial begin
-    hstate      = H_RESET;
-    distance_mm = 16'd0;
-    distance_valid = 1'b0;
-    delay_cnt   = 23'd0;
-  end
-
-  always @(posedge fastclk or negedge rstn) begin
-    if(!rstn) begin
-      hstate        <= H_RESET;
-      cmd_go        <= 1'b0;
-      distance_mm   <= 16'd0;
-      distance_valid<= 1'b0;
-      delay_cnt     <= 23'd0;
-    end else begin
-      cmd_go        <= 1'b0; // padrão: sem pulso neste ciclo
-      distance_valid<= 1'b0;
-
-      // contador de atraso (se ativo)
-      if(delay_cnt != 23'd0) delay_cnt <= delay_cnt - 23'd1;
-
-      case(hstate)
-        // Espera inicial (~5 ms) para garantir tBOOT e alimentação estável
-        H_RESET: begin
-          delay_cnt <= 23'd125000; // 5 ms @25MHz
-          hstate    <= H_BOOTWAIT;
-        end
-        H_BOOTWAIT: if(delay_done) hstate <= H_CFG_S;
-
-        // ---- Config: modo contínuo ----
-        H_CFG_S:     begin GO_START(); if(cmd_go) hstate<=H_CFG_AW; end
-        H_CFG_AW:    if(cmd_done) begin
-                        if(cmd_busy) ; // aguarda
-                        else begin
-                          // manda endereço write 0x52
-                          GO_W(ADR_W);
-                          if(cmd_go) ;
-                          if(cmd_done && !cmd_busy) ;
-                          if(cmd_done) ;
-                          hstate <= H_CFG_REG;
-                        end
-                     end else if(!cmd_busy && !cmd_done) begin
-                        // emit address write
-                        GO_W(ADR_W);
-                        hstate <= H_CFG_REG;
-                     end
-        H_CFG_REG:   if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd125000; end
-                        else begin GO_W(REG_SYSRANGE_START); hstate<=H_CFG_DAT; end
-                     end
-        H_CFG_DAT:   if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd125000; end
-                        else begin GO_W(8'h02); hstate<=H_CFG_P; end
-                     end
-        H_CFG_P:     if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd125000; end
-                        else begin GO_STOP(); hstate<=H_CFG_DONE; end
-                     end
-        H_CFG_DONE:  if(cmd_done) begin
-                        delay_cnt <= 23'd125000; // 5 ms após iniciar contínuo
-                        hstate    <= H_L_S;
-                     end
-
-        // ---- Loop de leitura ----
-        H_L_S:       if(delay_done) begin GO_START(); hstate<=H_L_AW; end
-        H_L_AW:      if(cmd_done) begin
-                        GO_W(ADR_W); hstate<=H_L_PTR;
-                     end
-        H_L_PTR:     if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd62500; end
-                        else begin GO_W(REG_RANGE_MSB); hstate<=H_L_RS; end
-                     end
-        H_L_RS:      if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd62500; end
-                        else begin GO_REP(); hstate<=H_L_AR; end
-                     end
-        H_L_AR:      if(cmd_done) begin
-                        GO_W(ADR_R); hstate<=H_L_RMSB;
-                     end
-        H_L_RMSB:    if(cmd_done) begin
-                        if(got_ack) begin GO_STOP(); hstate<=H_RETRY_WAIT; delay_cnt<=23'd62500; end
-                        else begin GO_RA(); hstate<=H_L_RLSB; end
-                     end
-        H_L_RLSB:    if(cmd_done) begin
-                        msb <= rd_data;
-                        GO_RN(); hstate<=H_L_P;
-                     end
-        H_L_P:       if(cmd_done) begin
-                        lsb <= rd_data;
-                        GO_STOP(); hstate<=H_L_PUB;
-                     end
-        H_L_PUB:     if(cmd_done) begin
-                        distance_mm   <= {msb, lsb};
-                        distance_valid<= 1'b1;        // pulso 1 ciclo
-                        delay_cnt     <= 23'd825000;  // ~33 ms (timing budget default) [2]
-                        hstate        <= H_L_S;
-                     end
-
-        // ---- Retentativa após NACK (espera e recomeça leitura) ----
-        H_RETRY_WAIT: if(delay_done) hstate <= H_L_S;
-
-        default: hstate <= H_RESET;
-      endcase
-    end
-  end
-
+	reg sda_t, scl_t; // Sinais tri-state control
+	// sda_t = 1 ou scl_t = 1 -> pino solto, essencialmente funciona como 1
+	// sda_t = 0 ou scl_t = 0 -> for?a n?vel baixo, ou 0
+	
+	wire sda_in, scl_in; // Leitura do barramento
+	
+	// Buffer Bidirecional:
+	BB sda_iob (.I(1'b0), .T(sda_t), .O(sda_in), .B(sda));
+    BB scl_iob (.I(1'b0), .T(scl_t), .O(scl_in), .B(scl));
+	
+	reg [15:0] cnt = 0; 	// Contador
+	reg [3:0] state = 0; 	// Estados
+	reg [3:0] bitidx = 7; 	// Indice de bits
+	reg [7:0] tx_byte; 	// Byte a ser transmitido
+	reg [7:0] rx_byte; 	// Byte a ser lido
+	reg rx_ready;
+	reg ack_ok;
+	
+	localparam [7:0]  REG_C0 = 8'hC0; // Registrador de teste
+	localparam [6:0]  ADDRESS7 = 7'h29; // VL53L0X
+	localparam [7:0]  ADDRESSW = {ADDRESS7, 1'b0}; 
+	localparam [7:0]  ADDRESSR = {ADDRESS7, 1'b1};
+	
+    localparam  S_IDLE          = 0,
+                S_START         = 1, // gera START (SDA low while SCL high)
+                S_SEND_BYTE     = 2, // envia 8 bits do tx_byte (bitidx)
+                S_BIT_HIGH      = 3, // período SCL alto do bit em transmissão
+                S_WAIT_ACK      = 4, // libera SDA e lê ACK do escravo
+                S_AFTER_ACK     = 5, // decide próximo passo (enviar outro byte, stop, start read)
+                S_STOP          = 6, // gera STOP
+                S_PAUSE         = 7, // pequeno delay entre STOP e próximo START
+                S_START2        = 8, // START para a fase de leitura (ADDRESSR)
+                S_READ_BITS_PRE = 9, // prepara a amostragem (libera SDA)
+                S_READ_BITS     = 10,// período SCL alto para leitura
+                S_READ_DONE     = 11;// after read: NACK + STOP
+	
+	// Sequencer control: usamos 'phase' para dizer qual operação estamos fazendo:
+		// phase=0 -> enviar ADDRESSW
+		// phase=1 -> enviar REG_C0
+		// phase=2 -> leitura (ADDRESSR + read byte)
+    reg [1:0] phase;
+	
+	always @(posedge fastclk) begin
+		if(rst) begin
+			sda_t <= 1'b1;
+			scl_t <= 1'b1;
+			state <= S_IDLE;
+			cnt <= 0;
+			tx_byte <= ADDRESSW;
+			bitidx <= 7;
+			phase <= 0;
+			rx_ready <= 0;
+			rx_byte <= 8'd0;
+			ack_ok <= 1'b1;
+		end else begin
+			if (cnt < HALF-1) cnt <= cnt + 1;
+			else cnt <= 0;
+			
+			case(state)
+				// -- IDLE --
+				S_IDLE: begin
+					sda_t <= 1'b1;
+					scl_t <= 1'b1;
+					rx_ready <= 0;
+					if(cnt == 0) begin
+						phase <= 0;
+						tx_byte <= ADDRESSW;
+						bitidx <= 7;
+						state <= S_START;
+					end
+				end
+				
+				// -- START: SDA cai quando SCL está alto --
+				S_START: begin
+					sda_t <= 1'b0; // SDA baixo
+					scl_t <= 1'b1; // SCL alto
+					if(cnt == HALF-1) begin
+						state <= S_SEND_BYTE;
+					end
+				end
+				
+				// -- SEND BYTE: SCL precisa estar baixo para enviar dados --
+				S_SEND_BYTE: begin
+					scl_t <= 1'b0; // SCL baixo
+					if(cnt == 0) begin
+						// Coloca SDA conforme bit atual
+						sda_t <= tx_byte[bitidx] ? 1'b1 : 1'b0;
+					end
+					if(cnt == HALF-1) state <= S_BIT_HIGH;
+				end
+				
+				// -- SCL ALTO --
+				S_BIT_HIGH: begin
+					if(cnt == 0) scl_t <= 1'b1; // Se nao der o periodo do clock, continua alto
+					if(cnt == HALF-1) begin // Quando bate o periodo do clock, desce SCL
+						scl_t <= 1'b0;
+						if(bitidx == 0) state <= S_WAIT_ACK; // Se o byte enviado tiver terminado, vai para ACK
+						else begin
+							bitidx <= bitidx - 1; // Vai para o proximo bit enviado
+							state <= S_SEND_BYTE; // Volta para enviar o resto do byte de dado
+						end
+					end
+				end
+				
+				// -- ACK --
+				S_WAIT_ACK: begin
+					if(cnt == 0) begin // Quando estiver fora do momento correto de clock, continua sda alto e scl baixo
+						sda_t <= 1'b1;
+						scl_t <= 1'b0; 
+					end
+					if(cnt == HALF-1) begin // Bateu clock, scl alto e sda baixo (ack/am)
+						scl_t <= 1'b0;
+						state <= S_AFTER_ACK; 
+					end
+				end
+				
+				// -- AFTER ACK: confirmamos o ACK ou NACK e decidimos o que fazer --
+				S_AFTER_ACK: begin
+					if(cnt == HALF/2) ack_ok <= sda_in; // 0 = ACK (escravo puxou para 0), 1 = NACK
+					if(cnt == HALF - 1) begin
+						// Momento de decisoes
+						if(phase == 0) begin
+							// Enviamos ADDRESSW, agora vamos enviar 0xC0
+							tx_byte <= REG_C0;
+							bitidx <= 7;
+							phase <= 1;
+							state <= S_SEND_BYTE; // Reinicia o processo, mas enviando 0xC0
+						end else if(phase == 1) begin
+							// Enviamos o indice do registrador, terminar escrita com STOP e ir para leitura
+							state <= S_STOP;
+						end else if(phase == 2) begin
+							// Enviamos ADDRESSR e recebemos ACK -> Iniciar leitura
+							state <= S_READ_BITS_PRE;
+						end else begin
+							// Se nao for esperado, ir para STOP e depois IDLE por seguranca.
+							state <= S_STOP;
+						end
+					end
+				end
+				
+				// -- STOP: Ponto de parada (intermediaria ou final, dependendo da aplicacao) -- 
+				S_STOP: begin
+					if(cnt == 0) begin // Esperando bater o clock
+						scl_t <= 1'b1;
+						sda_t <= 1'b0;
+					end
+					if(cnt == HALF/2) sda_t <= 1'b1; // Stop: sda alto e scl alto
+					if(cnt == HALF - 1) begin
+						// Se terminamos phase==1 (escrever indice), ir para fase de leitura
+						if(phase == 1) begin
+							phase <= 2;
+							// Gap antes do proximo start
+							state <= S_PAUSE;
+						end else begin
+							// Caso seja outra fase inesperada
+							state <= S_IDLE;
+						end
+					end
+				end
+				
+				// -- PAUSE: Pausa pequena entre STOP e proximo START --
+				S_PAUSE: begin
+					// Linhas liberadas por um ciclo inteiro para estabilidade
+					sda_t <= 1'b1;
+					scl_t <= 1'b1;
+					if (cnt == HALF-1) begin
+						// Iniciar segundo start para leitura
+						tx_byte <= ADDRESSR; // 0x53
+						bitidx <= 7;
+						state <= S_START2; // Segundo start
+					end
+				end
+				
+				// -- START2: Segundo start antes da leitura --
+				S_START2: begin
+					sda_t <= 1'b0;
+					scl_t <= 1'b1;
+					if(cnt == HALF-1) begin
+						state <= S_SEND_BYTE; // Reusa S_SEND_BYTE com novo tx_byte
+					end
+				end
+				
+				// Para leitura: quando chegarmos no S_AFTER_ACK apos mandar ADDRESR, preparamos para ler bits
+				// -- S_READ_BITS_PRE --
+				S_READ_BITS_PRE: begin
+					// Liberamos SDA e comecamos a ler bits
+					scl_t <= 1'b0;
+					if(cnt == 0) begin
+						sda_t <= 1'b1;
+						bitidx <= 7;
+						rx_byte <= 8'd0;
+					end
+					if(cnt == HALF-1) state <= S_READ_BITS;
+				end
+				
+				// -- S_READ_BITS: Leitura de bits --
+				S_READ_BITS: begin
+					if(cnt == 0) scl_t <= 1'b1; 
+					if(cnt == HALF/2) begin
+						rx_byte[bitidx] <= sda_in;
+					end
+					if(cnt == HALF-1) begin
+						// fim do bit
+						scl_t <= 1'b0;
+						if(bitidx == 0) begin
+							state <= S_READ_DONE; // Ultimo bit lido, leitura concluida
+						end else begin
+							bitidx <= bitidx - 1;
+							state <= S_READ_BITS_PRE; // Proximo bit
+						end
+					end
+				end
+				
+				// -- S_READ_DONE: Fim da leitura --
+				S_READ_DONE: begin
+					if(cnt == 0) begin
+						// Prepara NACK
+						sda_t <= 1'b1;
+						scl_t <= 1'b0;
+					end
+					if(cnt == HALF-1) begin
+						scl_t <= 1'b1;
+						state <= S_STOP;
+						rx_ready <= 1'b1;
+					end
+				end
+				
+				default: begin
+					state <= S_IDLE;
+				end
+			endcase
+		end
+	end
 endmodule
