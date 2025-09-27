@@ -14,7 +14,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Sat Sep 27 19:35:36 2025
+Sat Sep 27 20:11:09 2025
 
 
 Command Line:  synthesis -f ProjetoLaser_impl1_lattice.synproj -gui -msgset C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml 
@@ -44,7 +44,7 @@ Using performance grade 6.
 
 INFO - synthesis: User-Selected Strategy Settings
 Optimization goal = Timing
-Top-level module name = top_antigo.
+Top-level module name = top.
 Target frequency = 200.000000 MHz.
 Maximum fanout = 1000.
 Timing path count = 3
@@ -75,7 +75,6 @@ The -syn option is FALSE.
 -p C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/impl1 (searchpath added)
 -p C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser (searchpath added)
 Verilog design file = C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/top.v
-Verilog design file = C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/top_antigo.v
 NGD file = ProjetoLaser_impl1.ngd
 -sdc option: SDC file input not used.
 -lpf option: Output file option is ON.
@@ -87,41 +86,62 @@ Analyzing Verilog file C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADER
 Compile design.
 Compile Design Begin
 Analyzing Verilog file c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v. VERI-1482
-Analyzing Verilog file c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v. VERI-1482
 Analyzing Verilog file C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v. VERI-1482
-Top module name (Verilog): top_antigo
-INFO - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(1): compiling module top_antigo. VERI-1018
+Top module name (Verilog): top
+INFO - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(3): compiling module top. VERI-1018
 INFO - synthesis: C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(55): compiling module BB. VERI-1018
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(49): expression size 32 truncated to fit in target size 16. VERI-1209
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(86): expression size 32 truncated to fit in target size 4. VERI-1209
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(72): expression size 32 truncated to fit in target size 16. VERI-1209
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(115): expression size 32 truncated to fit in target size 4. VERI-1209
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(224): expression size 32 truncated to fit in target size 4. VERI-1209
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/sa5p00/data/sa5plib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/xo2c00/data/xo2clib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/mg5g00/data/mg5glib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/or5g00/data/orc5glib.ngl'...
 Loading device for application map from file 'sa5p45.nph' in environment: C:/lscc/diamond/3.14/ispfpga.
 Package Status:                     Final          Version 1.50.
-Top-level module name = top_antigo.
-WARNING - synthesis: Bit 7 of Register tx_byte is stuck at Zero
-WARNING - synthesis: Bit 6 of Register tx_byte is stuck at One
-WARNING - synthesis: Bit 5 of Register tx_byte is stuck at Zero
-WARNING - synthesis: Bit 4 of Register tx_byte is stuck at One
-WARNING - synthesis: Bit 3 of Register tx_byte is stuck at Zero
-WARNING - synthesis: Bit 2 of Register tx_byte is stuck at Zero
-WARNING - synthesis: Bit 1 of Register tx_byte is stuck at One
-WARNING - synthesis: Bit 0 of Register tx_byte is stuck at Zero
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(22): Removing unused instance _103. VDB-5034
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(23): Removing unused instance . VDB-5034
+Top-level module name = top.
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(24): Removing unused instance _171. VDB-5034
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(25): Removing unused instance . VDB-5034
+INFO - synthesis: Extracted state machine for register 'state' with one-hot encoding
+original encoding -> new encoding (one-hot encoding)
+
+ 0000 -> 000000000001
+
+ 0001 -> 000000000010
+
+ 0010 -> 000000000100
+
+ 0011 -> 000000001000
+
+ 0100 -> 000000010000
+
+ 0101 -> 000000100000
+
+ 0110 -> 000001000000
+
+ 0111 -> 000010000000
+
+ 1000 -> 000100000000
+
+ 1001 -> 001000000000
+
+ 1010 -> 010000000000
+
+ 1011 -> 100000000000
+
 
 
 
 WARNING - synthesis: Skipping pad insertion on sda due to black_box_pad_pin attribute.
 WARNING - synthesis: Skipping pad insertion on scl due to black_box_pad_pin attribute.
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top_antigo.v(115): Register state__i3 is stuck at Zero. VDB-5013
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(249): Register tx_byte_i6 is stuck at One. VDB-5014
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(249): Register tx_byte_i5 is stuck at Zero. VDB-5013
 GSR will not be inferred because no asynchronous signal was found in the netlist.
+Duplicate register/latch removal. tx_byte_i4 is a one-to-one match with tx_byte_i1.
 Applying 200.000000 MHz constraint to all clocks
 
 WARNING - synthesis: No user .sdc file.
-Results of NGD DRC are available in top_antigo_drc.log.
+Results of NGD DRC are available in top_drc.log.
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/sa5p00/data/sa5plib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/xo2c00/data/xo2clib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/mg5g00/data/mg5glib.ngl'...
@@ -129,43 +149,48 @@ Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/or5g00/data/orc5glib.ngl'...
 All blocks are expanded and NGD expansion is successful.
 Writing NGD file ProjetoLaser_impl1.ngd.
 
-################### Begin Area Report (top_antigo)######################
-Number of register bits => 41 of 44457 (0 % )
+################### Begin Area Report (top)######################
+Number of register bits => 55 of 44457 (0 % )
 BB => 2
 CCU2C => 18
-FD1P3AX => 18
-FD1P3IX => 3
-FD1S3AX => 4
-FD1S3IX => 16
+FD1P3AX => 20
+FD1P3IX => 5
+FD1P3JX => 1
+FD1S3IX => 25
+FD1S3JX => 4
 GSR => 1
 IB => 2
-LUT4 => 84
-PFUMX => 1
+LUT4 => 172
+PFUMX => 3
 ################### End Area Report ##################
 
 ################### Begin Clock Report ######################
 Clock Nets
 Number of Clocks: 1
-  Net : fastclk_c, loads : 41
+  Net : fastclk_c, loads : 55
 Clock Enable Nets
-Number of Clock Enables: 4
-Top 4 highest fanout Clock Enables:
-  Net : por_15__N_65, loads : 21
+Number of Clock Enables: 8
+Top 8 highest fanout Clock Enables:
+  Net : por_15__N_67, loads : 21
+  Net : scl_t_N_115, loads : 7
   Net : fastclk_c_enable_5, loads : 3
-  Net : fastclk_c_enable_2, loads : 1
   Net : fastclk_c_enable_3, loads : 1
+  Net : fastclk_c_enable_2, loads : 1
+  Net : fastclk_c_enable_6, loads : 1
+  Net : fastclk_c_enable_4, loads : 1
+  Net : fastclk_c_enable_7, loads : 1
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : por_15__N_65, loads : 21
-  Net : n931, loads : 16
-  Net : state_2, loads : 11
-  Net : state_1, loads : 11
-  Net : state_0, loads : 10
-  Net : cnt_6, loads : 8
-  Net : cnt_5, loads : 8
-  Net : cnt_2, loads : 8
-  Net : bitidx_0, loads : 8
-  Net : cnt_4, loads : 7
+  Net : cnt_1, loads : 22
+  Net : por_15__N_67, loads : 21
+  Net : n3784, loads : 21
+  Net : cnt_6, loads : 18
+  Net : cnt_5, loads : 17
+  Net : n2547, loads : 16
+  Net : n1490, loads : 16
+  Net : n707, loads : 15
+  Net : cnt_3, loads : 14
+  Net : n705, loads : 13
 ################### End Clock Report ##################
 
 <A name="lse_trs"></A><B><U><big>Timing Report Summary</big></U></B>
@@ -175,7 +200,7 @@ Constraint                              |   Constraint|       Actual|Levels
 --------------------------------------------------------------------------------
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk0 [get_nets fastclk_c]               |  200.000 MHz|   93.318 MHz|     8 *
+clk0 [get_nets fastclk_c]               |  200.000 MHz|   84.502 MHz|     9 *
                                         |             |             |
 --------------------------------------------------------------------------------
 
@@ -183,10 +208,10 @@ clk0 [get_nets fastclk_c]               |  200.000 MHz|   93.318 MHz|     8 *
 1 constraints not met.
 
 
-Peak Memory Usage: 93.723  MB
+Peak Memory Usage: 96.098  MB
 
 --------------------------------------------------------------
-Elapsed CPU time for LSE flow : 0.516  secs
+Elapsed CPU time for LSE flow : 0.578  secs
 --------------------------------------------------------------
 
 

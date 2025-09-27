@@ -125,7 +125,7 @@ module top(
 						scl_t <= 1'b0; 
 					end
 					if(cnt == HALF-1) begin // Bateu clock, scl alto e sda baixo (ack/am)
-						scl_t <= 1'b0;
+						scl_t <= 1'b1;
 						state <= S_AFTER_ACK; 
 					end
 				end

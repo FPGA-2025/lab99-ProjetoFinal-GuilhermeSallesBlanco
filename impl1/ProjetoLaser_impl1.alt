@@ -1,12 +1,12 @@
 NOTE Copyright (C), 1992-2010, Lattice Semiconductor Corporation *
 NOTE All Rights Reserved *
-NOTE DATE CREATED: Sat Sep 27 19:35:48 2025 *
-NOTE DESIGN NAME: top_antigo *
+NOTE DATE CREATED: Sat Sep 27 20:11:22 2025 *
+NOTE DESIGN NAME: top *
 NOTE DEVICE NAME: LFE5U-45F-6CABGA381 *
 NOTE PIN ASSIGNMENTS *
-NOTE PINS scl : J18 : out *
-NOTE PINS sda : P16 : out *
 NOTE PINS rstn : F4 : in *
 NOTE PINS fastclk : P3 : in *
+NOTE PINS sda : P16 : out *
+NOTE PINS scl : J18 : out *
 NOTE CONFIGURATION MODE: JTAG *
 NOTE COMPRESSION: off *
