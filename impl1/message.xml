@@ -58,17 +58,17 @@
         <Message>
             <ID>35901209</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(224): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(225): </Dynamic>
             <Dynamic>32</Dynamic>
             <Dynamic>4</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>224</Navigation>
+            <Navigation>225</Navigation>
         </Message>
         <Message>
             <ID>35935034</ID>
             <Severity>Warning</Severity>
             <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(24): </Dynamic>
-            <Dynamic>_171</Dynamic>
+            <Dynamic>_172</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
             <Navigation>24</Navigation>
         </Message>
@@ -99,18 +99,18 @@
         <Message>
             <ID>35935014</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(249): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(250): </Dynamic>
             <Dynamic>tx_byte_i6</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>249</Navigation>
+            <Navigation>250</Navigation>
         </Message>
         <Message>
             <ID>35935013</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(249): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(250): </Dynamic>
             <Dynamic>tx_byte_i5</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>249</Navigation>
+            <Navigation>250</Navigation>
         </Message>
         <Message>
             <ID>35001611</ID>
