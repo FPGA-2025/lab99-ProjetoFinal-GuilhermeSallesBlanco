@@ -1,5 +1,6 @@
 // Ordem de leitura: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [STOP] [START] [ADDRESSR] [ACK] [DATA(7:0)] [Am] [STOP]
 // Ordem de escrita: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [DATA(7:0)] [ACK] [STOP]
+// Se o ACK nao estiver aparecendo, tente trocar o extensor I2C
 module top(
 	input wire fastclk, // 25 MHz
 	input wire rstn,
@@ -16,7 +17,7 @@ module top(
 
 	reg sda_t, scl_t; // Sinais tri-state control
 	// sda_t = 1 ou scl_t = 1 -> pino solto, essencialmente funciona como 1
-	// sda_t = 0 ou scl_t = 0 -> for?a n?vel baixo, ou 0
+	// sda_t = 0 ou scl_t = 0 -> forca nivel baixo, ou 0
 	
 	wire sda_in, scl_in; // Leitura do barramento
 	

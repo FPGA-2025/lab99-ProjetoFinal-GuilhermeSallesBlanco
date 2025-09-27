@@ -4,7 +4,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Sat Sep 27 20:39:43 2025
+Sat Sep 27 20:49:05 2025
 
 C:/lscc/diamond/3.14/ispfpga\bin\nt64\par -f ProjetoLaser_impl1.p2t
 ProjetoLaser_impl1_map.ncd ProjetoLaser_impl1.dir ProjetoLaser_impl1.prf -gui
@@ -17,11 +17,11 @@ Preference file: ProjetoLaser_impl1.prf.
 Level/       Number       Worst        Timing       Worst        Timing       Run          NCD
 Cost [ncd]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
 ----------   --------     -----        ------       -----------  -----------  ----         ------
-5_1   *      0            30.818       0            0.179        0            08           Completed
+5_1   *      0            30.818       0            0.179        0            07           Completed
 
 * : Design saved.
 
-Total (real) run time for 1-seed: 8 secs 
+Total (real) run time for 1-seed: 7 secs 
 
 par done!
 
