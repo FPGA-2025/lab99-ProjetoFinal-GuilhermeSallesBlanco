@@ -7,3 +7,6 @@ Projeto elaborado com o apoio do programa Lattice Diamond. Código principal (to
 
 27/09:
 <img width="1200" height="214" alt="image" src="https://github.com/user-attachments/assets/8400c5f3-286d-4777-8cd7-db8db1916286" />
+
+30/09: Escrita e Leitura funcionando com registrador de teste.
+<img width="1013" height="203" alt="image" src="https://github.com/user-attachments/assets/321d8471-7632-4b5e-8582-415db771c325" />
