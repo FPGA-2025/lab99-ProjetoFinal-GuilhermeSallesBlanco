@@ -17,22 +17,22 @@ Target Vendor:  LATTICE
 Target Device:  LFE5U-45FCABGA381
 Target Performance:   6
 Mapper:  sa5p00,  version:  Diamond (64-bit) 3.14.0.75.2
-Mapped on:  09/27/25  20:49:04
+Mapped on:  09/30/25  15:54:43
 
 Design Summary
 --------------
 
-   Number of registers:     55 out of 44457 (0%)
-      PFU registers:           55 out of 43848 (0%)
+   Number of registers:     84 out of 44457 (0%)
+      PFU registers:           84 out of 43848 (0%)
       PIO registers:            0 out of   609 (0%)
-   Number of SLICEs:       108 out of 21924 (0%)
-      SLICEs as Logic/ROM:    108 out of 21924 (0%)
+   Number of SLICEs:       201 out of 21924 (1%)
+      SLICEs as Logic/ROM:    201 out of 21924 (1%)
       SLICEs as RAM:            0 out of 16443 (0%)
-      SLICEs as Carry:         18 out of 21924 (0%)
-   Number of LUT4s:        193 out of 43848 (0%)
-      Number used as logic LUTs:        157
+      SLICEs as Carry:         66 out of 21924 (0%)
+   Number of LUT4s:        379 out of 43848 (1%)
+      Number used as logic LUTs:        247
       Number used as distributed RAM:     0
-      Number used as ripple logic:       36
+      Number used as ripple logic:      132
       Number used as shift registers:     0
    Number of PIO sites used: 4 out of 203 (2%)
    Number of block RAMs:  0 out of 108 (0%)
@@ -66,7 +66,7 @@ Design Summary
 
 
 
-Design:  top                                           Date:  09/27/25  20:49:04
+Design:  top                                           Date:  09/30/25  15:54:43
 
 Design Summary (cont)
 ---------------------
@@ -80,31 +80,30 @@ Design Summary (cont)
    Number of Used DSP ALU Sites:  0 out of 72 (0 %)
    Number of Used DSP PRADD Sites:  0 out of 144 (0 %)
    Number of clocks:  1
-     Net fastclk_c: 37 loads, 37 rising, 0 falling (Driver: PIO fastclk )
-   Number of Clock Enables:  8
-     Net fastclk_c_enable_5: 2 loads, 2 LSLICEs
-     Net scl_t_N_117: 3 loads, 3 LSLICEs
-     Net por_15__N_67: 9 loads, 9 LSLICEs
-     Net fastclk_c_enable_4: 1 loads, 1 LSLICEs
+     Net fastclk_c: 47 loads, 47 rising, 0 falling (Driver: PIO fastclk )
+   Number of Clock Enables:  7
+     Net fastclk_c_enable_35: 2 loads, 2 LSLICEs
      Net fastclk_c_enable_2: 1 loads, 1 LSLICEs
-     Net fastclk_c_enable_3: 1 loads, 1 LSLICEs
-     Net fastclk_c_enable_6: 1 loads, 1 LSLICEs
-     Net fastclk_c_enable_7: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_34: 16 loads, 16 LSLICEs
+     Net scl_t_N_180: 2 loads, 2 LSLICEs
+     Net por_15__N_97: 9 loads, 9 LSLICEs
+     Net fastclk_c_enable_36: 1 loads, 1 LSLICEs
+     Net fastclk_c_enable_37: 1 loads, 1 LSLICEs
    Number of LSRs:  2
-     Net n3812: 15 loads, 15 LSLICEs
-     Net n1488: 9 loads, 9 LSLICEs
+     Net n6781: 35 loads, 35 LSLICEs
+     Net n5075: 1 loads, 1 LSLICEs
    Number of nets driven by tri-state buffers:  0
    Top 10 highest fanout non-clock nets:
-     Net n3812: 22 loads
-     Net n15: 20 loads
-     Net cnt_0: 17 loads
-     Net cnt_1: 16 loads
-     Net n2870: 16 loads
-     Net cnt_9: 15 loads
-     Net cnt_15: 14 loads
-     Net cnt_7: 14 loads
-     Net n708: 14 loads
-     Net por_15__N_67: 13 loads
+     Net n6781: 36 loads
+     Net n3632: 32 loads
+     Net cnt_14: 23 loads
+     Net n6802: 22 loads
+     Net cnt_6: 19 loads
+     Net n15: 18 loads
+     Net fastclk_c_enable_34: 16 loads
+     Net n16: 16 loads
+     Net n1413: 15 loads
+     Net cnt_11: 14 loads
 
 
 
@@ -125,23 +124,23 @@ IO (PIO) Attributes
 | IO Name             | Direction | Levelmode | IO         |
 |                     |           |  IO_TYPE  | Register   |
 +---------------------+-----------+-----------+------------+
-| rstn                | INPUT     | LVCMOS33  |            |
+| fastclk             | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
 
                                     Page 2
 
 
 
 
-Design:  top                                           Date:  09/27/25  20:49:04
+Design:  top                                           Date:  09/30/25  15:54:43
 
 IO (PIO) Attributes (cont)
 --------------------------
-+---------------------+-----------+-----------+------------+
-| fastclk             | INPUT     | LVCMOS33  |            |
-+---------------------+-----------+-----------+------------+
 | sda                 | BIDIR     | LVCMOS33  |            |
 +---------------------+-----------+-----------+------------+
 | scl                 | BIDIR     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| rstn                | INPUT     | LVCMOS33  |            |
 +---------------------+-----------+-----------+------------+
 
 Removed logic
@@ -149,16 +148,94 @@ Removed logic
 
 Block GSR_INST undriven or does not drive anything - clipped.
 Signal VCC_net undriven or does not drive anything - clipped.
-Signal cnt_517_add_4_1/S0 undriven or does not drive anything - clipped.
-Signal cnt_517_add_4_1/CI undriven or does not drive anything - clipped.
-Signal cnt_517_add_4_17/S1 undriven or does not drive anything - clipped.
-Signal cnt_517_add_4_17/CO undriven or does not drive anything - clipped.
-Signal por_515_add_4_1/S0 undriven or does not drive anything - clipped.
-Signal por_515_add_4_1/CI undriven or does not drive anything - clipped.
+Signal _add_1_667_add_4_33/S1 undriven or does not drive anything - clipped.
+Signal _add_1_667_add_4_33/CO undriven or does not drive anything - clipped.
+Signal _add_1_add_4_14/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_14/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_16/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_16/S0 undriven or does not drive anything - clipped.
+Signal por_602_add_4_1/S0 undriven or does not drive anything - clipped.
+Signal por_602_add_4_1/CI undriven or does not drive anything - clipped.
+Signal _add_1_add_4_18/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_18/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_20/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_20/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_22/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_22/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_24/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_24/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_26/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_26/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_28/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_28/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_30/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_30/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_32/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_32/CO undriven or does not drive anything - clipped.
+Signal add_2668_2/S1 undriven or does not drive anything - clipped.
+Signal add_2668_2/S0 undriven or does not drive anything - clipped.
+Signal add_2668_2/CI undriven or does not drive anything - clipped.
+Signal add_2668_4/S1 undriven or does not drive anything - clipped.
+Signal add_2668_4/S0 undriven or does not drive anything - clipped.
+Signal add_2668_6/S1 undriven or does not drive anything - clipped.
+Signal add_2668_6/S0 undriven or does not drive anything - clipped.
+Signal por_602_add_4_17/S1 undriven or does not drive anything - clipped.
+Signal por_602_add_4_17/CO undriven or does not drive anything - clipped.
+Signal add_2668_8/S1 undriven or does not drive anything - clipped.
+Signal add_2668_8/S0 undriven or does not drive anything - clipped.
+Signal add_2668_10/S1 undriven or does not drive anything - clipped.
+Signal add_2668_10/S0 undriven or does not drive anything - clipped.
+Signal add_2668_12/S1 undriven or does not drive anything - clipped.
+Signal add_2668_12/S0 undriven or does not drive anything - clipped.
+Signal add_2668_14/S1 undriven or does not drive anything - clipped.
+Signal add_2668_14/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_2/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_2/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_2/CI undriven or does not drive anything - clipped.
+
+                                    Page 3
+
+
+
+
+Design:  top                                           Date:  09/30/25  15:54:43
+
+Removed logic (cont)
+--------------------
+Signal add_2668_16/S1 undriven or does not drive anything - clipped.
+Signal add_2668_16/S0 undriven or does not drive anything - clipped.
+Signal add_2668_18/S1 undriven or does not drive anything - clipped.
+Signal add_2668_18/S0 undriven or does not drive anything - clipped.
+Signal add_2668_20/S1 undriven or does not drive anything - clipped.
+Signal add_2668_20/S0 undriven or does not drive anything - clipped.
+Signal add_2668_22/S1 undriven or does not drive anything - clipped.
+Signal add_2668_22/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_4/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_4/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_6/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_6/S0 undriven or does not drive anything - clipped.
+Signal add_2668_24/S1 undriven or does not drive anything - clipped.
+Signal add_2668_24/S0 undriven or does not drive anything - clipped.
+Signal add_2668_26/S1 undriven or does not drive anything - clipped.
+Signal add_2668_26/S0 undriven or does not drive anything - clipped.
+Signal _add_1_664_add_4_17/S1 undriven or does not drive anything - clipped.
+Signal _add_1_664_add_4_17/CO undriven or does not drive anything - clipped.
+Signal add_2668_28/S1 undriven or does not drive anything - clipped.
+Signal add_2668_28/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_8/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_8/S0 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_10/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_10/S0 undriven or does not drive anything - clipped.
+Signal add_2668_cout/S1 undriven or does not drive anything - clipped.
+Signal add_2668_cout/CO undriven or does not drive anything - clipped.
+Signal _add_1_664_add_4_1/S0 undriven or does not drive anything - clipped.
+Signal _add_1_664_add_4_1/CI undriven or does not drive anything - clipped.
+Signal _add_1_add_4_12/S1 undriven or does not drive anything - clipped.
+Signal _add_1_add_4_12/S0 undriven or does not drive anything - clipped.
 Signal scl_iob/O undriven or does not drive anything - clipped.
 Signal sda_iob/O undriven or does not drive anything - clipped.
-Signal por_515_add_4_17/S1 undriven or does not drive anything - clipped.
-Signal por_515_add_4_17/CO undriven or does not drive anything - clipped.
+Signal _add_1_667_add_4_1/S0 undriven or does not drive anything - clipped.
+Signal _add_1_667_add_4_1/CI undriven or does not drive anything - clipped.
 Block i2 was optimized away.
 
      
@@ -168,7 +245,7 @@ Run Time and Memory Usage
 
    Total CPU Time: 0 secs  
    Total REAL Time: 0 secs  
-   Peak Memory Usage: 156 MB
+   Peak Memory Usage: 157 MB
         
 
 
@@ -182,18 +259,7 @@ Run Time and Memory Usage
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-                                    Page 3
+                                    Page 4
 
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.

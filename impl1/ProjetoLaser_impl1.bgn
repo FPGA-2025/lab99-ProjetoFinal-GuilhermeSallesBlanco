@@ -4,7 +4,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Sat Sep 27 20:49:13 2025
+Tue Sep 30 15:54:54 2025
 
 
 Command: bitgen -w -d -g CfgMode:Disable -g RamCfg:NoReset -g DisableUES:TRUE -g ES:No -e -s C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.sec -k C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.bek -gui -msgset C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml ProjetoLaser_impl1.ncd ProjetoLaser_impl1.prf 
@@ -76,4 +76,4 @@ Bitstream Status: Final           Version 10.27.
 Saving bit stream in "ProjetoLaser_impl1.bit".
 Total CPU Time: 2 secs 
 Total REAL Time: 3 secs 
-Peak Memory Usage: 358 MB
+Peak Memory Usage: 359 MB

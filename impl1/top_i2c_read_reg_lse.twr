@@ -1,0 +1,221 @@
+--------------------------------------------------------------------------------
+Lattice Synthesis Timing Report, Version  
+Tue Sep 30 15:44:09 2025
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
+
+Report Information
+------------------
+Design:     top_i2c_read_reg
+Constraint file:  
+Report level:    verbose report, limited to 3 items per constraint
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+Constraint: create_clock -period 5.000000 -name clk0 [get_nets fastclk_c]
+            1762 items scored, 1762 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Error:  The following path violates requirements by 6.998ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1S3IX    CK             cnt__i8  (from fastclk_c +)
+   Destination:    FD1S3IX    D              cnt__i1  (to fastclk_c +)
+
+   Delay:                  12.173ns  (12.5% logic, 87.5% route), 8 logic levels.
+
+ Constraint Details:
+
+     12.173ns data_path cnt__i8 to cnt__i1 violates
+      5.000ns delay constraint less
+     -0.175ns L_S requirement (totaling 5.175ns) by 6.998ns
+
+ Path Details: cnt__i8 to cnt__i1
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.365             CK to Q              cnt__i8 (from fastclk_c)
+Route         2   e 1.258                                  cnt[8]
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_125
+Route        20   e 1.619                                  n15
+LUT4        ---     0.166              C to Z              i4369_2_lut_3_lut
+Route        15   e 1.561                                  n5561
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_103
+Route         4   e 1.297                                  n5195
+LUT4        ---     0.166              A to Z              i230_2_lut_rep_187
+Route         4   e 1.297                                  n6843
+LUT4        ---     0.166              C to Z              i4232_4_lut
+Route         1   e 1.020                                  n6332
+LUT4        ---     0.166              A to Z              i1_4_lut_adj_41
+Route        16   e 1.574                                  n14
+LUT4        ---     0.166              B to Z              i1_2_lut_adj_31
+Route         1   e 1.020                                  cnt_15__N_114[1]
+                  --------
+                   12.173  (12.5% logic, 87.5% route), 8 logic levels.
+
+
+Error:  The following path violates requirements by 6.998ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1S3IX    CK             cnt__i8  (from fastclk_c +)
+   Destination:    FD1S3IX    D              cnt__i2  (to fastclk_c +)
+
+   Delay:                  12.173ns  (12.5% logic, 87.5% route), 8 logic levels.
+
+ Constraint Details:
+
+     12.173ns data_path cnt__i8 to cnt__i2 violates
+      5.000ns delay constraint less
+     -0.175ns L_S requirement (totaling 5.175ns) by 6.998ns
+
+ Path Details: cnt__i8 to cnt__i2
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.365             CK to Q              cnt__i8 (from fastclk_c)
+Route         2   e 1.258                                  cnt[8]
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_125
+Route        20   e 1.619                                  n15
+LUT4        ---     0.166              C to Z              i4369_2_lut_3_lut
+Route        15   e 1.561                                  n5561
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_103
+Route         4   e 1.297                                  n5195
+LUT4        ---     0.166              A to Z              i230_2_lut_rep_187
+Route         4   e 1.297                                  n6843
+LUT4        ---     0.166              C to Z              i4232_4_lut
+Route         1   e 1.020                                  n6332
+LUT4        ---     0.166              A to Z              i1_4_lut_adj_41
+Route        16   e 1.574                                  n14
+LUT4        ---     0.166              B to Z              i1_2_lut_adj_30
+Route         1   e 1.020                                  cnt_15__N_114[2]
+                  --------
+                   12.173  (12.5% logic, 87.5% route), 8 logic levels.
+
+
+Error:  The following path violates requirements by 6.998ns
+
+ Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
+
+   Source:         FD1S3IX    CK             cnt__i8  (from fastclk_c +)
+   Destination:    FD1S3IX    D              cnt__i3  (to fastclk_c +)
+
+   Delay:                  12.173ns  (12.5% logic, 87.5% route), 8 logic levels.
+
+ Constraint Details:
+
+     12.173ns data_path cnt__i8 to cnt__i3 violates
+      5.000ns delay constraint less
+     -0.175ns L_S requirement (totaling 5.175ns) by 6.998ns
+
+ Path Details: cnt__i8 to cnt__i3
+
+   Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
+L_CO        ---     0.365             CK to Q              cnt__i8 (from fastclk_c)
+Route         2   e 1.258                                  cnt[8]
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_125
+Route        20   e 1.619                                  n15
+LUT4        ---     0.166              C to Z              i4369_2_lut_3_lut
+Route        15   e 1.561                                  n5561
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_103
+Route         4   e 1.297                                  n5195
+LUT4        ---     0.166              A to Z              i230_2_lut_rep_187
+Route         4   e 1.297                                  n6843
+LUT4        ---     0.166              C to Z              i4232_4_lut
+Route         1   e 1.020                                  n6332
+LUT4        ---     0.166              A to Z              i1_4_lut_adj_41
+Route        16   e 1.574                                  n14
+LUT4        ---     0.166              B to Z              i1_2_lut_adj_29
+Route         1   e 1.020                                  cnt_15__N_114[3]
+                  --------
+                   12.173  (12.5% logic, 87.5% route), 8 logic levels.
+
+Warning: 11.998 ns is the maximum delay for this constraint.
+
+
+Timing Report Summary
+--------------
+--------------------------------------------------------------------------------
+Constraint                              |   Constraint|       Actual|Levels
+--------------------------------------------------------------------------------
+                                        |             |             |
+create_clock -period 5.000000 -name     |             |             |
+clk0 [get_nets fastclk_c]               |     5.000 ns|    11.998 ns|     8 *
+                                        |             |             |
+--------------------------------------------------------------------------------
+
+
+1 constraints not met.
+
+--------------------------------------------------------------------------------
+Critical Nets                           |   Loads|  Errors| % of total
+--------------------------------------------------------------------------------
+n14                                     |      16|    1040|     59.02%
+                                        |        |        |
+n6332                                   |       1|     912|     51.76%
+                                        |        |        |
+n6843                                   |       4|     653|     37.06%
+                                        |        |        |
+n5561                                   |      15|     526|     29.85%
+                                        |        |        |
+n15                                     |      20|     492|     27.92%
+                                        |        |        |
+n5211                                   |       8|     424|     24.06%
+                                        |        |        |
+fastclk_c_enable_44                     |      32|     416|     23.61%
+                                        |        |        |
+n1365                                   |       6|     375|     21.28%
+                                        |        |        |
+n4533                                   |       1|     375|     21.28%
+                                        |        |        |
+n4534                                   |       1|     375|     21.28%
+                                        |        |        |
+n4535                                   |       1|     375|     21.28%
+                                        |        |        |
+n4532                                   |       1|     343|     19.47%
+                                        |        |        |
+n4531                                   |       1|     311|     17.65%
+                                        |        |        |
+n5195                                   |       4|     308|     17.48%
+                                        |        |        |
+n4530                                   |       1|     279|     15.83%
+                                        |        |        |
+n1370                                   |      12|     272|     15.44%
+                                        |        |        |
+n5749                                   |       1|     256|     14.53%
+                                        |        |        |
+n4529                                   |       1|     247|     14.02%
+                                        |        |        |
+n5899                                   |       1|     240|     13.62%
+                                        |        |        |
+n6844                                   |      85|     240|     13.62%
+                                        |        |        |
+por_15__N_113                           |      23|     240|     13.62%
+                                        |        |        |
+n47                                     |       4|     232|     13.17%
+                                        |        |        |
+n2828                                   |       1|     224|     12.71%
+                                        |        |        |
+n4528                                   |       1|     215|     12.20%
+                                        |        |        |
+n4527                                   |       1|     183|     10.39%
+                                        |        |        |
+--------------------------------------------------------------------------------
+
+
+Timing summary:
+---------------
+
+Timing errors: 1762  Score: 9273633
+
+Constraints cover  13014 paths, 493 nets, and 1455 connections (98.6% coverage)
+
+
+Peak memory: 106881024 bytes, TRCE: 1626112 bytes, DLYMAN: 4096 bytes
+CPU_TIME_REPORT: 0 secs 
