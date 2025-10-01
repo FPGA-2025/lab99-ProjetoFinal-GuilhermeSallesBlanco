@@ -1,6 +1,13 @@
 // Ordem de leitura: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [STOP] [START] [ADDRESSR] [ACK] [DATA(7:0)] [Am] [STOP]
 // Ordem de escrita: [START] [ADDRESSW] [ACK] [INDEX(7:0)] [ACK] [DATA(7:0)] [ACK] [STOP]
 // Se o ACK nao estiver aparecendo, tente trocar o extensor I2C
+
+// Suposto fluxo para pegar distancia (single shot): 
+	//i2c_write_reg(7'h29, 8'h00, 8'h01) ->
+	//-> Esperar que 0x13 (RESULT_INTERRUPT_STATUS) tenha o bit [new sample ready] ->
+	//-> i2c_read_reg(7'h29, 8'h13) ->
+	//-> Le 2 bytes consecutivos, 0x14 (MSB) e 0x15 (LSB), distance = {data_msb, data_lsb} ->
+	//-> Limpa flag de interrupcao: i2c_write_reg(7'h29, 8'h0B, 8'h01)
 module top(
 	input wire fastclk, // 25 MHz
 	input wire rstn,
@@ -27,8 +34,8 @@ module top(
 	
 	// ---------------- parâmetros / sinais adicionais ---------
 	localparam [6:0]  ADDRESS7    = 7'h29; // VL53L0X
-	localparam [7:0]  REG_TESTE   = 8'hC1; // Registrador de teste 
-	localparam integer GAP_TCKS   = 25000; // pequeno gap 
+	localparam [7:0]  REG_TESTE   = 8'hC2; // Registrador de teste 
+	localparam integer GAP_TCKS   = 12500; // pequeno gap (25MHz)
 	
 	reg [15:0] cnt = 0; 	// Contador (meio-período)
 	reg [3:0] state = 0; 	// Estados
@@ -60,6 +67,25 @@ module top(
 	// IDLE (gap) -> START -> send (address + W) -> ACK -> send (reg) -> ACK -> STOP
 	// -> gap curto -> REP_START -> send (address + R) -> ACK -> read 8 bits -> master NACK -> STOP -> DONE (rx_ready)
 
+	// ----------------- Novas variáveis para single-shot sequence -------------
+	// Mantive os comentários acima exatamente como você pediu.
+	reg send_data_after_reg;    // 1 -> após enviar reg, enviar também write_data (para writes como SYSRANGE_START)
+	reg [7:0] write_data;       // dado a ser escrito quando send_data_after_reg=1
+	reg [7:0] reg_target;       // registrador alvo (substitui uso fixo de REG_TESTE)
+	reg [2:0] seq_state;        // máquina de alto nível para single-shot
+	reg [7:0] msb, lsb;
+	reg [15:0] distance;
+
+	localparam [2:0]
+		SEQ_IDLE      = 3'd0,
+		SEQ_START_WR  = 3'd1,
+		SEQ_POLL_INT  = 3'd2,
+		SEQ_READ_MSB  = 3'd3,
+		SEQ_READ_LSB  = 3'd4,
+		SEQ_CLEAR_INT = 3'd5,
+		SEQ_DONE      = 3'd6;
+	// -----------------------------------------------------------------------
+
 	always @(posedge fastclk) begin
 		if (rst) begin
 			cnt          <= 16'd0;
@@ -73,6 +99,15 @@ module top(
 			ack_from_slave <= 1'b1;
 			rx_ready     <= 1'b0;
 			ack_ok       <= 1'b1;
+
+			// inicializa máquina de alto nível
+			send_data_after_reg <= 1'b0;
+			write_data <= 8'h00;
+			reg_target <= REG_TESTE;
+			seq_state <= SEQ_IDLE;
+			msb <= 8'h00;
+			lsb <= 8'h00;
+			distance <= 16'h0000;
 		end else begin
 			// contador de meio-período
 			if (cnt < HALF-1) cnt <= cnt + 16'd1;
@@ -153,14 +188,24 @@ module top(
 						// decidir próximo passo baseado no byte que acabou de ser enviado
 						if (tx_byte == {ADDRESS7,1'b0}) begin
 							// preparar envio de registrador (envia 1 byte de índice)
-							tx_byte <= REG_TESTE;
+							tx_byte <= reg_target;
 							bitidx <= 4'd7;
 							state <= S_TX_BIT_PRE;
 							cnt <= 16'd0;
-						end else if (tx_byte == REG_TESTE) begin
-							// já enviamos register -> STOP e depois REP_START (vai mandar Address+R)
-							state <= S_STOP;
-							cnt <= 16'd0;
+						end else if (tx_byte == reg_target) begin
+							// já enviamos register -> se for write (send_data_after_reg) -> envia dado
+							if (send_data_after_reg) begin
+								// enviar dado que foi pedido
+								tx_byte <= write_data;
+								bitidx <= 4'd7;
+								send_data_after_reg <= 1'b0; // limpar flag
+								state <= S_TX_BIT_PRE;
+								cnt <= 16'd0;
+							end else begin
+								// não há dado -> STOP e depois REP_START (vai mandar Address+R)
+								state <= S_STOP;
+								cnt <= 16'd0;
+							end
 						end else if (tx_byte == {ADDRESS7,1'b1}) begin
 							// já enviamos Address+R e ack presente -> vamos ler
 							bitidx <= 4'd7;
@@ -183,15 +228,16 @@ module top(
 					end
 					if (cnt == (HALF/4)) begin
 						sda_t <= 1'b1; // release SDA => STOP
-						// Se acabamos o envio do register, agora vamos emitir REPEATED START (Address+R)
-						if (tx_byte == REG_TESTE) begin
+						// Se acabamos o envio do register (ou seja, param reg_target era o ultimo byte enviado sem dado),
+						// agora vamos emitir REPEATED START (Address+R). Note: usamos reg_target dinamicamente.
+						if (tx_byte == reg_target) begin
 							gap <= 32'd0;
 							tx_byte <= {ADDRESS7, 1'b1};
 							state <= S_REP_START;
 						end else begin
 							// final da operação -> guardar rx_byte e indicar rx_ready
 							// NOTA: rx_byte só é válido se já tiver sido lido
-							// (este ramo acontece quando STOP segue a leitura)
+							// (este ramo acontece quando STOP segue a leitura, ou quando um write terminou)
 							rx_ready <= 1'b1;
 							state <= S_DONE;
 						end
@@ -285,6 +331,83 @@ module top(
 					state <= S_IDLE;
 				end
 			endcase
+
+			// ----------------- Máquina de alto nível (single-shot) -----------------
+			// Controla reg_target / send_data_after_reg / write_data reagindo ao pulso rx_ready
+			// rx_ready é pulso de 1 ciclo indicando que a transação terminou (seja write ou read)
+			case (seq_state)
+				SEQ_IDLE: begin
+					// preparar o primeiro write: SYSRANGE_START <- 0x01
+					// Isso prepara a próxima transação que será iniciada pelo próprio FSM de bytes
+					reg_target <= 8'h00;        // SYSRANGE_START
+					send_data_after_reg <= 1'b1;
+					write_data <= 8'h01;
+					seq_state <= SEQ_START_WR;
+				end
+
+				SEQ_START_WR: begin
+					// aguarda o write completar (rx_ready pulsado no STOP)
+					if (rx_ready) begin
+						// depois de iniciar a medição, começar a poll do RESULT_INTERRUPT_STATUS
+						reg_target <= 8'h13; // RESULT_INTERRUPT_STATUS
+						send_data_after_reg <= 1'b0;
+						seq_state <= SEQ_POLL_INT;
+					end
+				end
+
+				SEQ_POLL_INT: begin
+					// a cada rx_ready teremos o byte lido em rx_byte
+					if (rx_ready) begin
+						if (rx_byte != 8'h00) begin
+							// ready -> ler MSB (offset da biblioteca: RESULT_RANGE_STATUS + 10 = 0x1E)
+							reg_target <= 8'h1E; // MSB
+							send_data_after_reg <= 1'b0;
+							seq_state <= SEQ_READ_MSB;
+						end else begin
+							// não pronto: disparar nova leitura de 0x13 (reg_target já está 0x13)
+							reg_target <= 8'h13;
+							send_data_after_reg <= 1'b0;
+							// permanecer em SEQ_POLL_INT e aguardar próximo rx_ready
+						end
+					end
+				end
+
+				SEQ_READ_MSB: begin
+					if (rx_ready) begin
+						msb <= rx_byte;
+						// agora ler LSB (0x1F)
+						reg_target <= 8'h1F;
+						send_data_after_reg <= 1'b0;
+						seq_state <= SEQ_READ_LSB;
+					end
+				end
+
+				SEQ_READ_LSB: begin
+					if (rx_ready) begin
+						lsb <= rx_byte;
+						// agora limpar interrupcao (write 0x01 em 0x0B)
+						reg_target <= 8'h0B;
+						send_data_after_reg <= 1'b1;
+						write_data <= 8'h01;
+						seq_state <= SEQ_CLEAR_INT;
+					end
+				end
+
+				SEQ_CLEAR_INT: begin
+					if (rx_ready) begin
+						distance <= {msb, lsb};
+						seq_state <= SEQ_DONE;
+					end
+				end
+
+				SEQ_DONE: begin
+					// distance válido aqui. Para loop contínuo resetar para SEQ_IDLE (vai reiniciar o processo)
+					seq_state <= SEQ_IDLE;
+				end
+
+				default: seq_state <= SEQ_IDLE;
+			endcase
+			// -----------------------------------------------------------------------
 		end
 	end
 

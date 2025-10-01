@@ -9,7 +9,7 @@
 <PRE><A name="Map_Twr"></A><B><U><big>Lattice Synthesis Timing Report</big></U></B>
 --------------------------------------------------------------------------------
 Lattice Synthesis Timing Report, Version  
-Tue Sep 30 15:54:43 2025
+Wed Oct 01 18:11:27 2025
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -28,208 +28,130 @@ Report level:    verbose report, limited to 3 items per constraint
 
 ================================================================================
 Constraint: create_clock -period 5.000000 -name clk0 [get_nets fastclk_c]
-            1732 items scored, 1732 timing errors detected.
+            868 items scored, 868 timing errors detected.
 --------------------------------------------------------------------------------
 
 
-Error:  The following path violates requirements by 7.570ns
+Error:  The following path violates requirements by 6.792ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
-   Source:         FD1P3IX    CK             gap__i3  (from fastclk_c +)
-   Destination:    FD1S3IX    D              cnt__i1  (to fastclk_c +)
+   Source:         FD1S3IX    CK             cnt__i5  (from fastclk_c +)
+   Destination:    FD1P3JX    SP             tx_byte_i6  (to fastclk_c +)
 
-   Delay:                  12.745ns  (21.0% logic, 79.0% route), 22 logic levels.
+   Delay:                  11.871ns  (13.8% logic, 86.2% route), 9 logic levels.
 
  Constraint Details:
 
-     12.745ns data_path gap__i3 to cnt__i1 violates
+     11.871ns data_path cnt__i5 to tx_byte_i6 violates
       5.000ns delay constraint less
-     -0.175ns L_S requirement (totaling 5.175ns) by 7.570ns
+     -0.079ns LCE_S requirement (totaling 5.079ns) by 6.792ns
 
- Path Details: gap__i3 to cnt__i1
+ Path Details: cnt__i5 to tx_byte_i6
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.365             CK to Q              gap__i3 (from fastclk_c)
-Route         3   e 1.339                                  gap[3]
-A1_TO_FCO   ---     0.329           A[2] to COUT           add_2668_2
-Route         1   e 0.020                                  n4641
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_4
-Route         1   e 0.020                                  n4642
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_6
-Route         1   e 0.020                                  n4643
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_8
-Route         1   e 0.020                                  n4644
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_10
-Route         1   e 0.020                                  n4645
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_12
-Route         1   e 0.020                                  n4646
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_14
-Route         1   e 0.020                                  n4647
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_16
-Route         1   e 0.020                                  n4648
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_18
-Route         1   e 0.020                                  n4649
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_20
-Route         1   e 0.020                                  n4650
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_22
-Route         1   e 0.020                                  n4651
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_24
-Route         1   e 0.020                                  n4652
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_26
-Route         1   e 0.020                                  n4653
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_28
-Route         1   e 0.020                                  n4654
-FCI_TO_F    ---     0.322            CIN to S[2]           add_2668_cout
-Route         3   e 1.339                                  n1334
-LUT4        ---     0.166              D to Z              i1_3_lut_4_lut_adj_99
-Route         3   e 1.239                                  n6178
-LUT4        ---     0.166              B to Z              i1_4_lut_adj_58
-Route         3   e 1.239                                  n3885
-LUT4        ---     0.166              D to Z              i1_4_lut_adj_110
-Route         1   e 1.020                                  n5135
-LUT4        ---     0.166              A to Z              i1_4_lut_adj_109
-Route         1   e 1.020                                  n6290
-LUT4        ---     0.166              B to Z              i4266_4_lut
-Route        16   e 1.574                                  n16
-LUT4        ---     0.166              B to Z              i1_2_lut_adj_57
-Route         1   e 1.020                                  cnt_15__N_98[1]
+L_CO        ---     0.365             CK to Q              cnt__i5 (from fastclk_c)
+Route        12   e 1.616                                  cnt[5]
+LUT4        ---     0.166              B to Z              i1_2_lut
+Route         1   e 1.020                                  n7203
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_43
+Route        24   e 1.655                                  n6394
+LUT4        ---     0.166              C to Z              i1_3_lut_adj_51
+Route         1   e 1.020                                  n6951
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_50
+Route         4   e 1.297                                  scl_t_N_234
+LUT4        ---     0.166              D to Z              i1_3_lut_4_lut
+Route         1   e 0.020                                  n23
+MUXL5       ---     0.116           ALUT to Z              i36
+Route         1   e 1.020                                  n19
+LUT4        ---     0.166              A to Z              i35_3_lut
+Route         5   e 1.341                                  fastclk_c_enable_10
+LUT4        ---     0.166              C to Z              i5829_2_lut_3_lut
+Route         3   e 1.239                                  fastclk_c_enable_5
                   --------
-                   12.745  (21.0% logic, 79.0% route), 22 logic levels.
+                   11.871  (13.8% logic, 86.2% route), 9 logic levels.
 
 
-Error:  The following path violates requirements by 7.570ns
+Error:  The following path violates requirements by 6.792ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
-   Source:         FD1P3IX    CK             gap__i3  (from fastclk_c +)
-   Destination:    FD1S3IX    D              cnt__i2  (to fastclk_c +)
+   Source:         FD1S3IX    CK             cnt__i5  (from fastclk_c +)
+   Destination:    FD1P3JX    SP             tx_byte_i4  (to fastclk_c +)
 
-   Delay:                  12.745ns  (21.0% logic, 79.0% route), 22 logic levels.
+   Delay:                  11.871ns  (13.8% logic, 86.2% route), 9 logic levels.
 
  Constraint Details:
 
-     12.745ns data_path gap__i3 to cnt__i2 violates
+     11.871ns data_path cnt__i5 to tx_byte_i4 violates
       5.000ns delay constraint less
-     -0.175ns L_S requirement (totaling 5.175ns) by 7.570ns
+     -0.079ns LCE_S requirement (totaling 5.079ns) by 6.792ns
 
- Path Details: gap__i3 to cnt__i2
+ Path Details: cnt__i5 to tx_byte_i4
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.365             CK to Q              gap__i3 (from fastclk_c)
-Route         3   e 1.339                                  gap[3]
-A1_TO_FCO   ---     0.329           A[2] to COUT           add_2668_2
-Route         1   e 0.020                                  n4641
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_4
-Route         1   e 0.020                                  n4642
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_6
-Route         1   e 0.020                                  n4643
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_8
-Route         1   e 0.020                                  n4644
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_10
-Route         1   e 0.020                                  n4645
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_12
-Route         1   e 0.020                                  n4646
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_14
-Route         1   e 0.020                                  n4647
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_16
-Route         1   e 0.020                                  n4648
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_18
-Route         1   e 0.020                                  n4649
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_20
-Route         1   e 0.020                                  n4650
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_22
-Route         1   e 0.020                                  n4651
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_24
-Route         1   e 0.020                                  n4652
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_26
-Route         1   e 0.020                                  n4653
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_28
-Route         1   e 0.020                                  n4654
-FCI_TO_F    ---     0.322            CIN to S[2]           add_2668_cout
-Route         3   e 1.339                                  n1334
-LUT4        ---     0.166              D to Z              i1_3_lut_4_lut_adj_99
-Route         3   e 1.239                                  n6178
-LUT4        ---     0.166              B to Z              i1_4_lut_adj_58
-Route         3   e 1.239                                  n3885
-LUT4        ---     0.166              D to Z              i1_4_lut_adj_110
-Route         1   e 1.020                                  n5135
-LUT4        ---     0.166              A to Z              i1_4_lut_adj_109
-Route         1   e 1.020                                  n6290
-LUT4        ---     0.166              B to Z              i4266_4_lut
-Route        16   e 1.574                                  n16
-LUT4        ---     0.166              B to Z              i1_2_lut_adj_56
-Route         1   e 1.020                                  cnt_15__N_98[2]
+L_CO        ---     0.365             CK to Q              cnt__i5 (from fastclk_c)
+Route        12   e 1.616                                  cnt[5]
+LUT4        ---     0.166              B to Z              i1_2_lut
+Route         1   e 1.020                                  n7203
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_43
+Route        24   e 1.655                                  n6394
+LUT4        ---     0.166              C to Z              i1_3_lut_adj_51
+Route         1   e 1.020                                  n6951
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_50
+Route         4   e 1.297                                  scl_t_N_234
+LUT4        ---     0.166              D to Z              i1_3_lut_4_lut
+Route         1   e 0.020                                  n23
+MUXL5       ---     0.116           ALUT to Z              i36
+Route         1   e 1.020                                  n19
+LUT4        ---     0.166              A to Z              i35_3_lut
+Route         5   e 1.341                                  fastclk_c_enable_10
+LUT4        ---     0.166              C to Z              i5829_2_lut_3_lut
+Route         3   e 1.239                                  fastclk_c_enable_5
                   --------
-                   12.745  (21.0% logic, 79.0% route), 22 logic levels.
+                   11.871  (13.8% logic, 86.2% route), 9 logic levels.
 
 
-Error:  The following path violates requirements by 7.570ns
+Error:  The following path violates requirements by 6.792ns
 
  Logical Details:  Cell type  Pin type       Cell name  (clock net +/-)
 
-   Source:         FD1P3IX    CK             gap__i3  (from fastclk_c +)
-   Destination:    FD1S3IX    D              cnt__i3  (to fastclk_c +)
+   Source:         FD1S3IX    CK             cnt__i5  (from fastclk_c +)
+   Destination:    FD1P3JX    SP             tx_byte_i1  (to fastclk_c +)
 
-   Delay:                  12.745ns  (21.0% logic, 79.0% route), 22 logic levels.
+   Delay:                  11.871ns  (13.8% logic, 86.2% route), 9 logic levels.
 
  Constraint Details:
 
-     12.745ns data_path gap__i3 to cnt__i3 violates
+     11.871ns data_path cnt__i5 to tx_byte_i1 violates
       5.000ns delay constraint less
-     -0.175ns L_S requirement (totaling 5.175ns) by 7.570ns
+     -0.079ns LCE_S requirement (totaling 5.079ns) by 6.792ns
 
- Path Details: gap__i3 to cnt__i3
+ Path Details: cnt__i5 to tx_byte_i1
 
    Name    Fanout   Delay (ns)          Pins               Resource(Cell.Net)
-L_CO        ---     0.365             CK to Q              gap__i3 (from fastclk_c)
-Route         3   e 1.339                                  gap[3]
-A1_TO_FCO   ---     0.329           A[2] to COUT           add_2668_2
-Route         1   e 0.020                                  n4641
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_4
-Route         1   e 0.020                                  n4642
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_6
-Route         1   e 0.020                                  n4643
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_8
-Route         1   e 0.020                                  n4644
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_10
-Route         1   e 0.020                                  n4645
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_12
-Route         1   e 0.020                                  n4646
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_14
-Route         1   e 0.020                                  n4647
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_16
-Route         1   e 0.020                                  n4648
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_18
-Route         1   e 0.020                                  n4649
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_20
-Route         1   e 0.020                                  n4650
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_22
-Route         1   e 0.020                                  n4651
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_24
-Route         1   e 0.020                                  n4652
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_26
-Route         1   e 0.020                                  n4653
-FCI_TO_FCO  ---     0.051            CIN to COUT           add_2668_28
-Route         1   e 0.020                                  n4654
-FCI_TO_F    ---     0.322            CIN to S[2]           add_2668_cout
-Route         3   e 1.339                                  n1334
-LUT4        ---     0.166              D to Z              i1_3_lut_4_lut_adj_99
-Route         3   e 1.239                                  n6178
-LUT4        ---     0.166              B to Z              i1_4_lut_adj_58
-Route         3   e 1.239                                  n3885
-LUT4        ---     0.166              D to Z              i1_4_lut_adj_110
-Route         1   e 1.020                                  n5135
-LUT4        ---     0.166              A to Z              i1_4_lut_adj_109
-Route         1   e 1.020                                  n6290
-LUT4        ---     0.166              B to Z              i4266_4_lut
-Route        16   e 1.574                                  n16
-LUT4        ---     0.166              B to Z              i1_2_lut_adj_51
-Route         1   e 1.020                                  cnt_15__N_98[3]
+L_CO        ---     0.365             CK to Q              cnt__i5 (from fastclk_c)
+Route        12   e 1.616                                  cnt[5]
+LUT4        ---     0.166              B to Z              i1_2_lut
+Route         1   e 1.020                                  n7203
+LUT4        ---     0.166              B to Z              i1_4_lut_adj_43
+Route        24   e 1.655                                  n6394
+LUT4        ---     0.166              C to Z              i1_3_lut_adj_51
+Route         1   e 1.020                                  n6951
+LUT4        ---     0.166              C to Z              i1_4_lut_adj_50
+Route         4   e 1.297                                  scl_t_N_234
+LUT4        ---     0.166              D to Z              i1_3_lut_4_lut
+Route         1   e 0.020                                  n23
+MUXL5       ---     0.116           ALUT to Z              i36
+Route         1   e 1.020                                  n19
+LUT4        ---     0.166              A to Z              i35_3_lut
+Route         5   e 1.341                                  fastclk_c_enable_10
+LUT4        ---     0.166              C to Z              i5829_2_lut_3_lut
+Route         3   e 1.239                                  fastclk_c_enable_5
                   --------
-                   12.745  (21.0% logic, 79.0% route), 22 logic levels.
+                   11.871  (13.8% logic, 86.2% route), 9 logic levels.
 
-Warning: 12.570 ns is the maximum delay for this constraint.
+Warning: 11.792 ns is the maximum delay for this constraint.
 
 
 <A name="mtw1_rs"></A><B><U><big>Timing Report Summary</big></U></B>
@@ -239,7 +161,7 @@ Constraint                              |   Constraint|       Actual|Levels
 --------------------------------------------------------------------------------
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk0 [get_nets fastclk_c]               |     5.000 ns|    12.570 ns|    22 *
+clk0 [get_nets fastclk_c]               |     5.000 ns|    11.792 ns|     9 *
                                         |             |             |
 --------------------------------------------------------------------------------
 
@@ -249,69 +171,71 @@ clk0 [get_nets fastclk_c]               |     5.000 ns|    12.570 ns|    22 *
 --------------------------------------------------------------------------------
 Critical Nets                           |   Loads|  Errors| % of total
 --------------------------------------------------------------------------------
-n16                                     |      16|    1568|     90.53%
+n44                                     |      16|     464|     53.46%
                                         |        |        |
-n6290                                   |       1|    1568|     90.53%
+n51                                     |       3|     272|     31.34%
                                         |        |        |
-n5135                                   |       1|    1216|     70.21%
+n2794                                   |      10|     272|     31.34%
                                         |        |        |
-n3885                                   |       3|     720|     41.57%
+n5807                                   |       1|     272|     31.34%
                                         |        |        |
-n6178                                   |       3|     696|     40.18%
+n5808                                   |       1|     272|     31.34%
                                         |        |        |
-n1334                                   |       3|     592|     34.18%
+n5809                                   |       1|     272|     31.34%
                                         |        |        |
-n4654                                   |       1|     592|     34.18%
+n5810                                   |       1|     272|     31.34%
                                         |        |        |
-n4653                                   |       1|     556|     32.10%
+n5811                                   |       1|     272|     31.34%
                                         |        |        |
-n4652                                   |       1|     520|     30.02%
+n5812                                   |       1|     272|     31.34%
                                         |        |        |
-n2145                                   |       9|     504|     29.10%
+n5813                                   |       1|     272|     31.34%
                                         |        |        |
-n13                                     |       4|     496|     28.64%
+n5814                                   |       1|     272|     31.34%
                                         |        |        |
-n4640                                   |       1|     488|     28.18%
+n6765                                   |       1|     272|     31.34%
                                         |        |        |
-n4651                                   |       1|     484|     27.94%
+rx_ready_N_241                          |      10|     261|     30.07%
                                         |        |        |
-n4639                                   |       1|     456|     26.33%
+n5806                                   |       1|     240|     27.65%
                                         |        |        |
-n4650                                   |       1|     448|     25.87%
+n6539                                   |       4|     225|     25.92%
                                         |        |        |
-n4638                                   |       1|     424|     24.48%
+n5805                                   |       1|     208|     23.96%
                                         |        |        |
-n4649                                   |       1|     408|     23.56%
+n66_adj_9                               |       1|     192|     22.12%
                                         |        |        |
-n4637                                   |       1|     392|     22.63%
+n5804                                   |       1|     176|     20.28%
                                         |        |        |
-n4648                                   |       1|     368|     21.25%
+n8801                                   |       4|     152|     17.51%
                                         |        |        |
-n4636                                   |       1|     360|     20.79%
+n5803                                   |       1|     144|     16.59%
                                         |        |        |
-n4635                                   |       1|     328|     18.94%
+n6394                                   |      24|     133|     15.32%
                                         |        |        |
-n4647                                   |       1|     326|     18.82%
+fastclk_c_enable_50                     |      32|     128|     14.75%
                                         |        |        |
-n4634                                   |       1|     296|     17.09%
+n3539                                   |       1|     128|     14.75%
                                         |        |        |
-n4646                                   |       1|     284|     16.40%
+n7203                                   |       1|     124|     14.29%
                                         |        |        |
-n4633                                   |       1|     264|     15.24%
+n6419                                   |      30|     120|     13.82%
                                         |        |        |
-n1339                                   |       7|     256|     14.78%
+fastclk_c_enable_10                     |       5|     119|     13.71%
                                         |        |        |
-n5662                                   |       1|     256|     14.78%
+n5802                                   |       1|     112|     12.90%
                                         |        |        |
-n4645                                   |       1|     242|     13.97%
+n6879                                   |       1|     112|     12.90%
                                         |        |        |
-n4632                                   |       1|     232|     13.39%
+fastclk_c_enable_5                      |       3|     111|     12.79%
                                         |        |        |
-n15                                     |      18|     200|     11.55%
+n3                                      |       1|     107|     12.33%
                                         |        |        |
-n4631                                   |       1|     200|     11.55%
+n19                                     |       1|     107|     12.33%
                                         |        |        |
-n4644                                   |       1|     198|     11.43%
+n61                                     |       1|     106|     12.21%
+                                        |        |        |
+n8806                                   |       8|      95|     10.94%
                                         |        |        |
 --------------------------------------------------------------------------------
 
@@ -319,12 +243,12 @@ n4644                                   |       1|     198|     11.43%
 <A name="mtw1_ts"></A><B><U><big>Timing summary:</big></U></B>
 ---------------
 
-Timing errors: 1732  Score: 10395216
+Timing errors: 868  Score: 4574248
 
-Constraints cover  11331 paths, 463 nets, and 1278 connections (99.5% coverage)
+Constraints cover  16151 paths, 597 nets, and 1766 connections (99.4% coverage)
 
 
-Peak memory: 107761664 bytes, TRCE: 0 bytes, DLYMAN: 0 bytes
+Peak memory: 107180032 bytes, TRCE: 61440 bytes, DLYMAN: 0 bytes
 CPU_TIME_REPORT: 0 secs 
 
 
