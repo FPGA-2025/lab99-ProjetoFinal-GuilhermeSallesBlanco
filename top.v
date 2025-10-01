@@ -6,8 +6,10 @@ module top(
     input wire fastclk, // 25 MHz
     input wire rstn,
     inout wire sda,
-    inout wire scl
+    inout wire scl,
+	output wire led
 );
+
     // Endereco do VL53L0X = 0x29
     localparam integer HALF = 125; // SCL de 100kHz
     reg [15:0] por = 16'd0;
@@ -342,7 +344,9 @@ module top(
                 end
                 SEQ_CLEAR_INT: begin
                     if (rx_ready) begin
+						//if({msb, lsb} != 16'h0014) begin
                         distance <= {msb, lsb};
+						//end
                         seq_state <= SEQ_DONE;
                     end
                 end
@@ -353,4 +357,19 @@ module top(
             endcase
         end
     end
+	
+	// Instancia do PWM
+	
+	pwm_led #(
+	  .CLK_HZ(25_000_000),
+	  .PWM_FREQ_HZ(1_000),   // 1 kHz (sem flicker)
+	  .MIN_MM(50),           // ajuste conforme sua faixa útil
+	  .MAX_MM(1000)
+	) u_pwm_led (
+	  .clk     (fastclk),
+	  .rstn    (rstn),
+	  .distance(distance),   // vem do seu fluxo VL53L0X
+	  .led_pwm (led)         // vai direto para a porta top-level 'led'
+	);
+	
 endmodule

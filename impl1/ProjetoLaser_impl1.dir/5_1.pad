@@ -6,13 +6,14 @@ Performance Grade:      6
 PACKAGE:          CABGA381
 Package Status:                     Final          Version 1.50
 
-Wed Oct 01 18:51:12 2025
+Wed Oct 01 19:28:21 2025
 
 Pinout by Port Name:
 +-----------+----------+---------------+-------+-----------+-----------------------------------------------------+
 | Port Name | Pin/Bank | Buffer Type   | Site  | BC Enable | Properties                                          |
 +-----------+----------+---------------+-------+-----------+-----------------------------------------------------+
 | fastclk   | P3/6     | LVCMOS33_IN   | PL68C |           | PULL:DOWN CLAMP:ON HYSTERESIS:ON                    |
+| led       | H18/2    | LVCMOS33_OUT  | PR20A |           | DRIVE:8mA CLAMP:ON SLEW:SLOW                        |
 | rstn      | F4/7     | LVCMOS33_IN   | PL20A |           | PULL:UP CLAMP:ON HYSTERESIS:ON                      |
 | scl       | J18/2    | LVCMOS33_OUT  | PR29C |           | DRIVE:8mA CLAMP:ON SLEW:SLOW                        |
 | sda       | P16/3    | LVCMOS33_BIDI | PR44B |           | DRIVE:8mA PULL:UP CLAMP:ON HYSTERESIS:ON SLEW:SLOW  |
@@ -158,7 +159,7 @@ Pinout by Pin Number:
 | H5/7     |     unused, PULL:DOWN |            |               | PL29C | GR_PCLK7_0/LDQ29         |           |
 | H16/2    |     unused, PULL:DOWN |            |               | PR17D | RDQ17                    |           |
 | H17/2    |     unused, PULL:DOWN |            |               | PR20B | RDQ17                    |           |
-| H18/2    |     unused, PULL:DOWN |            |               | PR20A | RDQ17                    |           |
+| H18/2    | led                   | LOCATED    | LVCMOS33_OUT  | PR20A | RDQ17                    |           |
 | H20/2    |     unused, PULL:DOWN |            |               | PR29B | RDQSN29                  |           |
 | J1/6     |     unused, PULL:DOWN |            |               | PL41B | LDQSN41                  |           |
 | J3/6     |     unused, PULL:DOWN |            |               | PL38C | GR_PCLK6_1/LDQ41         |           |
@@ -295,6 +296,7 @@ List of All Pins' Locate Preferences Based on Final Placement After PAR
 to Help Users Lock Down ALL the Pins Easily (by Simply Copy & Paste): 
 
 LOCATE  COMP  "fastclk"  SITE  "P3";
+LOCATE  COMP  "led"  SITE  "H18";
 LOCATE  COMP  "rstn"  SITE  "F4";
 LOCATE  COMP  "scl"  SITE  "J18";
 LOCATE  COMP  "sda"  SITE  "P16";
@@ -309,5 +311,5 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Oct 01 18:51:12 2025
+Wed Oct 01 19:28:21 2025
 

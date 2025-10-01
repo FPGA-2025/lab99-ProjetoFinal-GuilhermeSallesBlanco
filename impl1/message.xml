@@ -14,20 +14,9 @@
     </Task>
     <Task name="Map">
         <Message>
-            <ID>1100679</ID>
+            <ID>52131473</ID>
             <Severity>Warning</Severity>
-            <Dynamic>C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.lpf(17): Semantic error in &quot;LOCATE COMP &quot;validread&quot; SITE &quot;H18&quot; ;&quot;: </Dynamic>
-            <Dynamic>validread</Dynamic>
-            <Navigation>C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.lpf</Navigation>
-            <Navigation>17</Navigation>
-        </Message>
-        <Message>
-            <ID>1100644</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.lpf(18): Semantic error in &quot;IOBUF PORT &quot;validread&quot; IO_TYPE=LVCMOS33 ;&quot;: </Dynamic>
-            <Dynamic>validread</Dynamic>
-            <Navigation>C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/ProjetoLaser.lpf</Navigation>
-            <Navigation>18</Navigation>
+            <Dynamic>u_pwm_led/lat_alu_1</Dynamic>
         </Message>
     </Task>
     <Task name="Lattice_Synthesis">
@@ -42,10 +31,10 @@
         <Message>
             <ID>35901018</ID>
             <Severity>Info</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(10): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(5): </Dynamic>
             <Dynamic>top</Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>10</Navigation>
+            <Navigation>5</Navigation>
         </Message>
         <Message>
             <ID>35901018</ID>
@@ -56,20 +45,28 @@
             <Navigation>55</Navigation>
         </Message>
         <Message>
-            <ID>35935034</ID>
-            <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(27): </Dynamic>
-            <Dynamic>_312</Dynamic>
-            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>27</Navigation>
+            <ID>35901018</ID>
+            <Severity>Info</Severity>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/pwm_led.v(2): </Dynamic>
+            <Dynamic>pwm_led</Dynamic>
+            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/pwm_led.v</Navigation>
+            <Navigation>2</Navigation>
         </Message>
         <Message>
             <ID>35935034</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(28): </Dynamic>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(24): </Dynamic>
+            <Dynamic>_312</Dynamic>
+            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
+            <Navigation>24</Navigation>
+        </Message>
+        <Message>
+            <ID>35935034</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(25): </Dynamic>
             <Dynamic></Dynamic>
             <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>28</Navigation>
+            <Navigation>25</Navigation>
         </Message>
         <Message>
             <ID>35001774</ID>
@@ -82,6 +79,30 @@
             <Severity>Info</Severity>
             <Dynamic>seq_state</Dynamic>
             <Dynamic>one-hot</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>31</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>30</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>29</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001747</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>28</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
         </Message>
         <Message>
             <ID>35001747</ID>
@@ -126,6 +147,12 @@
             <Dynamic>write_data</Dynamic>
         </Message>
         <Message>
+            <ID>35001747</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>27</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
+        </Message>
+        <Message>
             <ID>35001263</ID>
             <Severity>Warning</Severity>
             <Dynamic>sda</Dynamic>
@@ -136,12 +163,45 @@
             <Dynamic>scl</Dynamic>
         </Message>
         <Message>
-            <ID>35935013</ID>
+            <ID>35001747</ID>
             <Severity>Warning</Severity>
-            <Dynamic>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(362): </Dynamic>
-            <Dynamic>tx_byte_i5</Dynamic>
-            <Navigation>c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v</Navigation>
-            <Navigation>362</Navigation>
+            <Dynamic>0</Dynamic>
+            <Dynamic>\u_pwm_led/duty_calc</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i8</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i7</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i5</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i2</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i1</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i13</Dynamic>
+        </Message>
+        <Message>
+            <ID>35001779</ID>
+            <Severity>Warning</Severity>
+            <Dynamic>\u_pwm_led/duty_i14</Dynamic>
         </Message>
         <Message>
             <ID>35001611</ID>
