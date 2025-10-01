@@ -5,7 +5,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Oct 01 19:28:12 2025
+Wed Oct 01 19:37:13 2025
 
 
 Command Line:  synthesis -f ProjetoLaser_impl1_lattice.synproj -gui -msgset C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml 
@@ -176,17 +176,16 @@ Number of register bits => 224 of 44457 (0 % )
 ALU54B => 1
 BB => 2
 CCU2C => 237
-FD1P3AX => 20
+FD1P3AX => 21
 FD1P3IX => 82
-FD1P3JX => 6
+FD1P3JX => 5
 FD1S3AX => 39
 FD1S3AY => 3
 FD1S3IX => 59
 FD1S3JX => 15
 GSR => 1
 IB => 2
-L6MUX21 => 1
-LUT4 => 352
+LUT4 => 346
 MULT18X18D => 2
 OB => 1
 PFUMX => 7
@@ -197,30 +196,30 @@ Clock Nets
 Number of Clocks: 1
   Net : fastclk_c, loads : 224
 Clock Enable Nets
-Number of Clock Enables: 22
+Number of Clock Enables: 20
 Top 10 highest fanout Clock Enables:
   Net : fastclk_c_enable_49, loads : 32
-  Net : por_15__N_162, loads : 24
-  Net : rx_ready, loads : 22
-  Net : fastclk_c_enable_90, loads : 16
-  Net : fastclk_c_enable_59, loads : 8
+  Net : por_15__N_162, loads : 26
+  Net : rx_ready, loads : 21
+  Net : fastclk_c_enable_91, loads : 16
   Net : fastclk_c_enable_68, loads : 8
-  Net : fastclk_c_enable_69, loads : 7
+  Net : fastclk_c_enable_59, loads : 8
+  Net : fastclk_c_enable_71, loads : 8
   Net : fastclk_c_enable_52, loads : 5
-  Net : fastclk_c_enable_10, loads : 3
-  Net : fastclk_c_enable_91, loads : 3
+  Net : fastclk_c_enable_76, loads : 3
+  Net : fastclk_c_enable_13, loads : 3
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : n11203, loads : 122
+  Net : n10486, loads : 122
+  Net : n3821, loads : 32
   Net : fastclk_c_enable_49, loads : 32
-  Net : n10069, loads : 32
-  Net : n11202, loads : 26
-  Net : por_15__N_162, loads : 24
-  Net : bitidx_2, loads : 22
-  Net : rx_ready, loads : 22
-  Net : bitidx_0, loads : 21
-  Net : n2731, loads : 19
+  Net : por_15__N_162, loads : 26
+  Net : n10756, loads : 22
+  Net : rx_ready, loads : 21
+  Net : cnt_6, loads : 19
+  Net : bitidx_2, loads : 18
   Net : n2727, loads : 18
+  Net : cnt_1, loads : 16
 ################### End Clock Report ##################
 
 Timing Report Summary
@@ -238,8 +237,8 @@ clk0 [get_nets fastclk_c]               |  200.000 MHz|   12.792 MHz|   143 *
 1 constraints not met.
 
 
-Peak Memory Usage: 187.797  MB
+Peak Memory Usage: 186.496  MB
 
 --------------------------------------------------------------
-Elapsed CPU time for LSE flow : 3.703  secs
+Elapsed CPU time for LSE flow : 3.594  secs
 --------------------------------------------------------------

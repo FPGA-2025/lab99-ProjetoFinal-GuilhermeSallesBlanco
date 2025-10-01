@@ -3,8 +3,8 @@ Report for cell top
    Instance path: top
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	     456.00        100.0
-                                  LUT4	     352.00        100.0
+                                  SLIC	     455.00        100.0
+                                  LUT4	     346.00        100.0
                                  IOBUF	          5        100.0
                                 PFUREG	        224        100.0
                                 RIPPLE	        237        100.0
@@ -17,6 +17,6 @@ Report for cell pwm_led
                      Cell usage:
                                   cell	      count    Res Usage(%)
                                   SLIC	      52.25        11.5
-                                  LUT4	      58.00        16.5
+                                  LUT4	      58.00        16.8
                                 PFUREG	         74        33.0
                                 RIPPLE	          9         3.8

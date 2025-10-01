@@ -26,7 +26,7 @@ module top(
     // ---------------- parâmetros / sinais adicionais ----------------
     localparam [6:0] ADDRESS7 = 7'h29; // VL53L0X
     localparam [7:0] REG_TESTE = 8'hC2; // Registrador de teste
-    localparam integer GAP_TCKS = 12500; // pequeno gap (25MHz)
+    localparam integer GAP_TCKS = 5000; // pequeno gap (5MHz)
     reg [15:0] cnt = 0;    // Contador (meio-período)
     reg [3:0] state = 0;   // Estados
     reg [3:0] bitidx = 7;  // Indice de bits
