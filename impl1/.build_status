@@ -5,39 +5,39 @@
             <Task name="IBIS" build_result="0" update_result="3" update_time="0"/>
             <Task name="TimingSimFileVlg" build_result="0" update_result="3" update_time="0"/>
             <Task name="TimingSimFileVHD" build_result="0" update_result="3" update_time="0"/>
-            <Task name="Bitgen" build_result="2" update_result="0" update_time="1759353101"/>
+            <Task name="Bitgen" build_result="2" update_result="0" update_time="1759355481"/>
             <Task name="Promgen" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Milestone name="Map" build_result="2" build_time="1759353089">
-            <Task name="Map" build_result="2" update_result="0" update_time="1759353089"/>
+        <Milestone name="Map" build_result="2" build_time="1759355468">
+            <Task name="Map" build_result="2" update_result="0" update_time="1759355468"/>
             <Task name="MapTrace" build_result="0" update_result="3" update_time="0"/>
             <Task name="MapVerilogSimFile" build_result="0" update_result="3" update_time="0"/>
             <Task name="MapVHDLSimFile" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Milestone name="PAR" build_result="2" build_time="1759353097">
-            <Task name="PAR" build_result="2" update_result="0" update_time="1759353097"/>
-            <Task name="PARTrace" build_result="2" update_result="0" update_time="1759353098"/>
+        <Milestone name="PAR" build_result="2" build_time="1759355477">
+            <Task name="PAR" build_result="2" update_result="0" update_time="1759355477"/>
+            <Task name="PARTrace" build_result="2" update_result="0" update_time="1759355478"/>
             <Task name="IOTiming" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Milestone name="Synthesis" build_result="2" build_time="1759353087">
-            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1759353087"/>
-            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1759353101"/>
+        <Milestone name="Synthesis" build_result="2" build_time="1759355466">
+            <Task name="Lattice_Synthesis" build_result="2" update_result="0" update_time="1759355466"/>
+            <Task name="LSE_Compile" build_result="2" update_result="0" update_time="1759355481"/>
         </Milestone>
         <Milestone name="TOOL_Report" build_result="0" build_time="0">
-            <Task name="HDLE" build_result="2" update_result="0" update_time="1759353086"/>
-            <Task name="BKM" build_result="0" update_result="2" update_time="1759353086"/>
+            <Task name="HDLE" build_result="2" update_result="0" update_time="1759355464"/>
+            <Task name="BKM" build_result="0" update_result="2" update_time="1759355464"/>
             <Task name="SSO" build_result="0" update_result="3" update_time="0"/>
             <Task name="PIODRC" build_result="0" update_result="3" update_time="0"/>
             <Task name="DEC" build_result="0" update_result="3" update_time="0"/>
         </Milestone>
-        <Report name=".vdbs/ProjetoLaser_impl1_map.vdb" last_build_time="1759353089" last_build_size="117935"/>
-        <Report name="ProjetoLaser_impl1.bgn" last_build_time="1759353100" last_build_size="4724"/>
-        <Report name="ProjetoLaser_impl1.bit" last_build_time="1759353100" last_build_size="1032634"/>
-        <Report name="ProjetoLaser_impl1.lsedata" last_build_time="1759353086" last_build_size="417378"/>
-        <Report name="ProjetoLaser_impl1.ncd" last_build_time="1759353097" last_build_size="401769"/>
-        <Report name="ProjetoLaser_impl1.ngd" last_build_time="1759353087" last_build_size="304384"/>
-        <Report name="ProjetoLaser_impl1.twr" last_build_time="1759353098" last_build_size="47025"/>
-        <Report name="ProjetoLaser_impl1_map.ncd" last_build_time="1759353088" last_build_size="273228"/>
+        <Report name=".vdbs/ProjetoLaser_impl1_map.vdb" last_build_time="1759355468" last_build_size="125532"/>
+        <Report name="ProjetoLaser_impl1.bgn" last_build_time="1759355481" last_build_size="4724"/>
+        <Report name="ProjetoLaser_impl1.bit" last_build_time="1759355481" last_build_size="1032634"/>
+        <Report name="ProjetoLaser_impl1.lsedata" last_build_time="1759355465" last_build_size="438828"/>
+        <Report name="ProjetoLaser_impl1.ncd" last_build_time="1759355477" last_build_size="439258"/>
+        <Report name="ProjetoLaser_impl1.ngd" last_build_time="1759355466" last_build_size="325542"/>
+        <Report name="ProjetoLaser_impl1.twr" last_build_time="1759355478" last_build_size="47088"/>
+        <Report name="ProjetoLaser_impl1_map.ncd" last_build_time="1759355467" last_build_size="300418"/>
     </Strategy>
 </BuildStatus>
-                                                          
+                                                         

@@ -5,7 +5,7 @@ Copyright (c) 1995 AT&T Corp.   All rights reserved.
 Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
 Copyright (c) 2001 Agere Systems   All rights reserved.
 Copyright (c) 2002-2024 Lattice Semiconductor Corporation,  All rights reserved.
-Wed Oct 01 18:11:26 2025
+Wed Oct 01 18:51:05 2025
 
 
 Command Line:  synthesis -f ProjetoLaser_impl1_lattice.synproj -gui -msgset C:/Users/Guilherme Blanco/Desktop/College/EmbarcatechFase2/PlacaFPGA/Projetos/ProjetoLaser/promote.xml 
@@ -79,7 +79,7 @@ Compile Design Begin
 Analyzing Verilog file c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v. VERI-1482
 Analyzing Verilog file C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v. VERI-1482
 Top module name (Verilog): top
-INFO - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(11): compiling module top. VERI-1018
+INFO - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(10): compiling module top. VERI-1018
 INFO - synthesis: C:/lscc/diamond/3.14/ispfpga/userware/NT/SYNTHESIS_HEADERS/ecp5u.v(55): compiling module BB. VERI-1018
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/sa5p00/data/sa5plib.ngl'...
 Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/xo2c00/data/xo2clib.ngl'...
@@ -88,8 +88,8 @@ Loading NGL library 'C:/lscc/diamond/3.14/ispfpga/or5g00/data/orc5glib.ngl'...
 Loading device for application map from file 'sa5p45.nph' in environment: C:/lscc/diamond/3.14/ispfpga.
 Package Status:                     Final          Version 1.50.
 Top-level module name = top.
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(32): Removing unused instance _275. VDB-5034
-WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(33): Removing unused instance . VDB-5034
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(27): Removing unused instance _312. VDB-5034
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(28): Removing unused instance . VDB-5034
 INFO - synthesis: Extracted state machine for register 'state' with one-hot encoding
 original encoding -> new encoding (one-hot encoding)
 
@@ -118,19 +118,17 @@ original encoding -> new encoding (one-hot encoding)
 INFO - synthesis: Extracted state machine for register 'seq_state' with one-hot encoding
 original encoding -> new encoding (one-hot encoding)
 
- 000 -> 0000001
+ 000 -> 000001
 
- 001 -> 0000010
+ 001 -> 000010
 
- 010 -> 0000100
+ 010 -> 000100
 
- 011 -> 0001000
+ 011 -> 001000
 
- 100 -> 0010000
+ 101 -> 010000
 
- 101 -> 0100000
-
- 110 -> 1000000
+ 110 -> 100000
 
 
 
@@ -144,6 +142,7 @@ WARNING - synthesis: Bit 2 of Register write_data is stuck at Zero
 WARNING - synthesis: Bit 1 of Register write_data is stuck at Zero
 WARNING - synthesis: Skipping pad insertion on sda due to black_box_pad_pin attribute.
 WARNING - synthesis: Skipping pad insertion on scl due to black_box_pad_pin attribute.
+WARNING - synthesis: c:/users/guilherme blanco/desktop/college/embarcatechfase2/placafpga/projetos/projetolaser/top.v(362): Register tx_byte_i5 is stuck at Zero. VDB-5013
 GSR will not be inferred because no asynchronous signal was found in the netlist.
 Applying 200.000000 MHz constraint to all clocks
 
@@ -157,50 +156,49 @@ All blocks are expanded and NGD expansion is successful.
 Writing NGD file ProjetoLaser_impl1.ngd.
 
 ################### Begin Area Report (top)######################
-Number of register bits => 113 of 44457 (0 % )
+Number of register bits => 116 of 44457 (0 % )
 BB => 2
 CCU2C => 66
-FD1P3AX => 19
-FD1P3IX => 48
+FD1P3AX => 20
+FD1P3IX => 50
 FD1P3JX => 4
 FD1S3IX => 34
 FD1S3JX => 8
 GSR => 1
 IB => 2
-L6MUX21 => 1
-LUT4 => 347
-PFUMX => 10
+LUT4 => 384
+PFUMX => 13
 ################### End Area Report ##################
 
 ################### Begin Clock Report ######################
 Clock Nets
 Number of Clocks: 1
-  Net : fastclk_c, loads : 113
+  Net : fastclk_c, loads : 116
 Clock Enable Nets
-Number of Clock Enables: 11
+Number of Clock Enables: 20
 Top 10 highest fanout Clock Enables:
-  Net : fastclk_c_enable_50, loads : 32
-  Net : por_15__N_124, loads : 23
-  Net : rx_ready, loads : 20
-  Net : fastclk_c_enable_51, loads : 8
-  Net : fastclk_c_enable_10, loads : 5
-  Net : scl_t_N_234, loads : 4
-  Net : fastclk_c_enable_5, loads : 3
-  Net : fastclk_c_enable_12, loads : 1
-  Net : fastclk_c_enable_2, loads : 1
-  Net : fastclk_c_enable_13, loads : 1
+  Net : fastclk_c_enable_42, loads : 32
+  Net : rx_ready, loads : 21
+  Net : por_15__N_128, loads : 20
+  Net : fastclk_c_enable_54, loads : 5
+  Net : scl_t_N_245, loads : 4
+  Net : fastclk_c_enable_46, loads : 3
+  Net : fastclk_c_enable_51, loads : 2
+  Net : fastclk_c_enable_43, loads : 2
+  Net : fastclk_c_enable_9, loads : 1
+  Net : fastclk_c_enable_48, loads : 1
 Highest fanout non-clock nets
 Top 10 highest fanout non-clock nets:
-  Net : n8805, loads : 89
-  Net : fastclk_c_enable_50, loads : 32
-  Net : n6840, loads : 32
-  Net : n9, loads : 32
-  Net : n6419, loads : 30
-  Net : n6394, loads : 24
-  Net : por_15__N_124, loads : 23
-  Net : cnt_12, loads : 22
-  Net : cnt_13, loads : 20
-  Net : bitidx_0, loads : 20
+  Net : n9608, loads : 92
+  Net : n1836, loads : 36
+  Net : n9601, loads : 33
+  Net : fastclk_c_enable_42, loads : 32
+  Net : n7744, loads : 32
+  Net : bitidx_0, loads : 30
+  Net : bitidx_2, loads : 26
+  Net : bitidx_1, loads : 25
+  Net : rx_ready, loads : 21
+  Net : por_15__N_128, loads : 20
 ################### End Clock Report ##################
 
 Timing Report Summary
@@ -210,7 +208,7 @@ Constraint                              |   Constraint|       Actual|Levels
 --------------------------------------------------------------------------------
                                         |             |             |
 create_clock -period 5.000000 -name     |             |             |
-clk0 [get_nets fastclk_c]               |  200.000 MHz|   84.803 MHz|     9 *
+clk0 [get_nets fastclk_c]               |  200.000 MHz|   83.209 MHz|    22 *
                                         |             |             |
 --------------------------------------------------------------------------------
 
@@ -218,8 +216,8 @@ clk0 [get_nets fastclk_c]               |  200.000 MHz|   84.803 MHz|     9 *
 1 constraints not met.
 
 
-Peak Memory Usage: 102.215  MB
+Peak Memory Usage: 102.059  MB
 
 --------------------------------------------------------------
-Elapsed CPU time for LSE flow : 0.969  secs
+Elapsed CPU time for LSE flow : 1.063  secs
 --------------------------------------------------------------
