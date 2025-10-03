@@ -18,3 +18,6 @@ Projeto elaborado com o apoio do programa Lattice Diamond. Código principal (to
 01/10: Quando eu coloco minha mão em cima do VL53L0X, ele fica preso em 0x00 e 0x14. Quando tiro ela do caminho, os valores começam a mexer.
 <img width="1008" height="200" alt="image" src="https://github.com/user-attachments/assets/37d1025c-33f3-4c89-a6f3-6985e70b45b5" />
 <img width="1022" height="193" alt="image" src="https://github.com/user-attachments/assets/b965ac16-996a-4a89-bdb2-9aa94a26c1e8" />
+
+03/10: PWM funcionando com o LED, pretendo adicionar mais 3 LEDs. Physical View:
+<img width="908" height="643" alt="image" src="https://github.com/user-attachments/assets/514d6034-5598-463c-ad53-836852506fcf" />
