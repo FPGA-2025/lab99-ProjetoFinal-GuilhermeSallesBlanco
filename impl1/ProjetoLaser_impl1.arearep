@@ -1,39 +1,36 @@
 ----------------------------------------------------------------------
 Report for cell top.TECH
-Register bits:  224 of 44457 (0.504%)
-I/O cells:      5
+Register bits:  225 of 44457 (0.506%)
+I/O cells:      8
                                   Cell usage:
                                cell     count   Res Usage(%)
-                             ALU54B         1          100.0
                                  BB         2          100.0
-                              CCU2C       237          100.0
-                            FD1P3AX        21          100.0
+                              CCU2C       842          100.0
+                            FD1P3AX        22          100.0
                             FD1P3IX        82          100.0
-                            FD1P3JX         5          100.0
-                            FD1S3AX        39          100.0
-                            FD1S3AY         3          100.0
-                            FD1S3IX        59          100.0
-                            FD1S3JX        15          100.0
+                            FD1P3JX         4          100.0
+                            FD1S3IX        77          100.0
+                            FD1S3JX        40          100.0
                                 GSR         1          100.0
                                  IB         2          100.0
-                               LUT4       346          100.0
-                         MULT18X18D         2          100.0
-                                 OB         1          100.0
-                              PFUMX         7          100.0
+                            L6MUX21         4          100.0
+                               LUT4      2317          100.0
+                         MULT18X18D         1          100.0
+                                 OB         4          100.0
+                              PFUMX        32          100.0
 SUB MODULES
                             pwm_led         1
-                              TOTAL       824
+                              TOTAL      3431
 ----------------------------------------------------------------------
 Report for cell pwm_led.v1
-Instance Path : u_pwm_led
+Instance Path : u_bar
                                   Cell usage:
                                cell     count   Res Usage(%)
-                             ALU54B         1          100.0
-                              CCU2C         9            3.8
-                            FD1S3AX        39          100.0
-                            FD1S3AY         3          100.0
-                            FD1S3IX        25           42.4
-                            FD1S3JX         7           46.7
-                               LUT4        58           16.8
-                         MULT18X18D         2          100.0
-                              TOTAL       144
+                              CCU2C       752           89.3
+                            FD1S3IX        43           55.8
+                            FD1S3JX        32           80.0
+                            L6MUX21         4          100.0
+                               LUT4      2026           87.4
+                         MULT18X18D         1          100.0
+                              PFUMX        24           75.0
+                              TOTAL      2882

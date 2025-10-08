@@ -1,13 +1,16 @@
 NOTE Copyright (C), 1992-2010, Lattice Semiconductor Corporation *
 NOTE All Rights Reserved *
-NOTE DATE CREATED: Wed Oct 01 19:37:54 2025 *
+NOTE DATE CREATED: Wed Oct 08 19:46:46 2025 *
 NOTE DESIGN NAME: top *
 NOTE DEVICE NAME: LFE5U-45F-6CABGA381 *
 NOTE PIN ASSIGNMENTS *
 NOTE PINS sda : P16 : inout *
-NOTE PINS fastclk : P3 : in *
 NOTE PINS scl : J18 : out *
 NOTE PINS rstn : F4 : in *
-NOTE PINS led : H18 : out *
+NOTE PINS fastclk : P3 : in *
+NOTE PINS led[0] : H18 : out *
+NOTE PINS led[1] : G18 : out *
+NOTE PINS led[2] : F18 : out *
+NOTE PINS led[3] : E18 : out *
 NOTE CONFIGURATION MODE: JTAG *
 NOTE COMPRESSION: off *

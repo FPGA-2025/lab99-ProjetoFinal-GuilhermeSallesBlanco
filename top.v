@@ -7,7 +7,7 @@ module top(
     input wire rstn,
     inout wire sda,
     inout wire scl,
-	output wire led
+	output wire [3:0] led
 );
 
     // Endereco do VL53L0X = 0x29
@@ -23,10 +23,13 @@ module top(
     // Buffer Bidirecional:
     BB sda_iob (.I(1'b0), .T(sda_t), .O(sda_in), .B(sda));
     BB scl_iob (.I(1'b0), .T(scl_t), .O(scl_in), .B(scl));
+	
     // ---------------- parâmetros / sinais adicionais ----------------
     localparam [6:0] ADDRESS7 = 7'h29; // VL53L0X
     localparam [7:0] REG_TESTE = 8'hC2; // Registrador de teste
-    localparam integer GAP_TCKS = 5000; // pequeno gap (5MHz)
+    localparam integer GAP_TCKS = 500; // pequeno gap (5MHz)
+	// ----------------------------------------------------------------
+	
     reg [15:0] cnt = 0;    // Contador (meio-período)
     reg [3:0] state = 0;   // Estados
     reg [3:0] bitidx = 7;  // Indice de bits
@@ -41,7 +44,7 @@ module top(
     reg [1:0] rx_remaining;      // contador descendente durante leitura
     reg [1:0] rx_byte_idx;       // 0 -> primeiro byte (MSB), 1 -> segundo (LSB)
 
-    // Máquina de estados (baseada no módulo que já funciona)
+    // Maquina de estados (baseada no módulo que ja funciona)
     localparam [3:0]
         S_IDLE = 4'd0,
         S_START = 4'd1,
@@ -52,17 +55,17 @@ module top(
         S_REP_START = 4'd6,
         S_RX_BIT_PRE = 4'd7, // preparar para receber bit (SCL=0)
         S_RX_BIT_HIGH = 4'd8, // SCL=1 -> amostra bit
-        S_RX_LAST_ACK = 4'd9, // Novo: master envia ACK (se mais bytes) ou NACK (último)
+        S_RX_LAST_ACK = 4'd9, 
         S_DONE = 4'd10;
     reg [3:0] fstate;
     reg ack_from_slave;
 
-    // Sequência de alto nível:
+    // Sequência de alto nivel:
     // IDLE (gap) -> START -> send (address + W) -> ACK -> send (reg) -> ACK -> STOP
     // -> gap curto -> REP_START -> send (address + R) -> ACK -> read N bits -> ACK/NACK -> STOP -> DONE (rx_ready)
 
     // ----------------- high-level (single-shot) -----------------
-    reg send_data_after_reg; // 1 -> após enviar reg, enviar também write_data (para writes)
+    reg send_data_after_reg; // 1 -> apos enviar reg, enviar também write_data (para writes)
     reg [7:0] write_data;    // dado a ser escrito quando send_data_after_reg=1
     reg [7:0] reg_target;    // registrador alvo
     reg [2:0] seq_state;     // máquina de alto nível
@@ -72,7 +75,7 @@ module top(
         SEQ_IDLE      = 3'd0,
         SEQ_START_WR  = 3'd1,
         SEQ_POLL_INT  = 3'd2,
-        SEQ_READ_MSB  = 3'd3, // mantido para mínimo impacto; agora lê 2 bytes de uma só vez
+        SEQ_READ_MSB  = 3'd3, 
         SEQ_CLEAR_INT = 3'd5,
         SEQ_DONE      = 3'd6;
 
@@ -118,7 +121,7 @@ module top(
                         if (gap < GAP_TCKS) gap <= gap + 32'd1;
                         else begin
                             gap <= 32'd0;
-                            // começar transação: enviar Address+W
+                            // começar transacao: enviar Address+W
                             tx_byte <= {ADDRESS7, 1'b0};
                             bitidx <= 4'd7;
                             state <= S_START;
@@ -128,7 +131,7 @@ module top(
                 end
 
                 S_START: begin
-                    sda_t <= 1'b0; // força SDA low
+                    sda_t <= 1'b0; // forca SDA low
                     scl_t <= 1'b1; // SCL alto
                     if (cnt == HALF-1) begin
                         state <= S_TX_BIT_PRE;
@@ -137,7 +140,7 @@ module top(
                 end
 
                 S_TX_BIT_PRE: begin
-                    scl_t <= 1'b0; // força SCL baixo
+                    scl_t <= 1'b0; // forca SCL baixo
                     if (cnt == 16'd0) begin
                         sda_t <= tx_byte[bitidx] ? 1'b1 : 1'b0;
                     end
@@ -164,7 +167,7 @@ module top(
 
                 S_TX_ACK: begin
                     if (cnt == 16'd0) begin
-                        sda_t <= 1'b1; // release SDA
+                        sda_t <= 1'b1; 
                         scl_t <= 1'b0;
                     end
                     if (cnt == (HALF/4)) scl_t <= 1'b1;
@@ -344,9 +347,9 @@ module top(
                 end
                 SEQ_CLEAR_INT: begin
                     if (rx_ready) begin
-						//if({msb, lsb} != 16'h0014) begin
+						if({msb, lsb} != 16'h0014) begin
                         distance <= {msb, lsb};
-						//end
+						end
                         seq_state <= SEQ_DONE;
                     end
                 end
@@ -359,17 +362,15 @@ module top(
     end
 	
 	// Instancia do PWM
-	
 	pwm_led #(
 	  .CLK_HZ(25_000_000),
-	  .PWM_FREQ_HZ(1_000),   // 1 kHz (sem flicker)
-	  .MIN_MM(50),           // ajuste conforme sua faixa útil
+	  .PWM_FREQ_HZ(1000),
+	  .MIN_MM(50),
 	  .MAX_MM(1000)
-	) u_pwm_led (
-	  .clk     (fastclk),
-	  .rstn    (rstn),
-	  .distance(distance),   // vem do seu fluxo VL53L0X
-	  .led_pwm (led)         // vai direto para a porta top-level 'led'
+	) u_bar (
+	  .clk      (fastclk),
+	  .rstn     (!rst),       
+	  .distance (distance),
+	  .leds     (led)       
 	);
-	
 endmodule
