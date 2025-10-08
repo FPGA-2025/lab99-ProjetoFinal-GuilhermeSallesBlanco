@@ -1,10 +1,15 @@
 # Integração FPGA com Medidor de Distância a Laser VL53L0X
 
-Projeto final da Fase 2 do programa de residência Embarcatech, turma de FPGA, Brasília. O intuito é receber os dados lidos pelo medidor de distância e representar eles por meio de um LED com PWM.
-Projeto elaborado com o apoio do programa Lattice Diamond. Código principal (top.v) em VERILOG.
+Projeto final da Fase 2 do programa de residência Embarcatech, turma de FPGA, Brasília. O intuito é receber os dados lidos pelo medidor de distância e representar eles por meio de quatro LEDs com PWM.
+Projeto elaborado com o apoio do programa Lattice Diamond. Códigos principais (top.v e pwm_led.v) em VERILOG.
 
-<img width="1450" height="176" alt="Setup e Write + ACK" src="https://github.com/user-attachments/assets/f9066c21-455b-49a3-847a-e65ddcf3f899" />
 
+https://github.com/user-attachments/assets/e5ddc7b1-bf7c-4c07-99e1-4f84b58ef056
+
+
+O maior problema deste trabalho foi criar um protocolo de comunicação I2C entre a placa e o módulo de sensor de distância, mas, passado este ponto (como visto no processo detalhado abaixo), a implementação ficou mais fácil. O I2C foi feito com buffer bidirecional, seguindo a ordem de bits determinada pelo datasheet do módulo (disponível em https://www.st.com/en/imaging-and-photonics-solutions/vl53l0x.html).
+
+Progresso:
 27/09:
 <img width="1200" height="214" alt="image" src="https://github.com/user-attachments/assets/8400c5f3-286d-4777-8cd7-db8db1916286" />
 
@@ -15,6 +20,13 @@ Projeto elaborado com o apoio do programa Lattice Diamond. Código principal (to
 <img width="1189" height="230" alt="image" src="https://github.com/user-attachments/assets/1faa1361-4842-40fe-bf74-085c12896aca" />
 <img width="1177" height="208" alt="image" src="https://github.com/user-attachments/assets/585b483b-58da-48ba-a5a7-4885121d9645" />
 
-01/10: Quando eu coloco minha mão em cima do VL53L0X, ele fica preso em 0x00 e 0x14. Quando tiro ela do caminho, os valores começam a mexer.
+01/10: Quando eu coloco minha mão em cima do VL53L0X, ele fica preso em 0x00 e 0x14. Quando tiro ela do caminho, os valores começam a mexer. A distância está sendo lida corretamente.
 <img width="1008" height="200" alt="image" src="https://github.com/user-attachments/assets/37d1025c-33f3-4c89-a6f3-6985e70b45b5" />
 <img width="1022" height="193" alt="image" src="https://github.com/user-attachments/assets/b965ac16-996a-4a89-bdb2-9aa94a26c1e8" />
+
+03/10: PWM funcionando com o LED, pretendo adicionar mais 3 LEDs. Physical View:
+<img width="908" height="643" alt="image" src="https://github.com/user-attachments/assets/514d6034-5598-463c-ad53-836852506fcf" />
+
+08/10: Projeto funcionando. Physical View:
+<img width="888" height="633" alt="image" src="https://github.com/user-attachments/assets/2656f4fe-b485-4852-81bf-00b3a8a9999e" />
+
