@@ -1,4 +1,5 @@
 # Integração FPGA com Medidor de Distância a Laser VL53L0X
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/825cde86-7660-4d60-9025-6573ff8df09f" />
 
 Projeto final da Fase 2 do programa de residência Embarcatech, turma de FPGA, Brasília. O intuito é receber os dados lidos pelo medidor de distância e representar eles por meio de quatro LEDs com PWM.
 Projeto elaborado com o apoio do programa Lattice Diamond. Códigos principais (top.v e pwm_led.v) em VERILOG.
